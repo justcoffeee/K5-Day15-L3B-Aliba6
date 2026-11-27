@@ -22,3 +22,9 @@ README của nhóm có mục "Dùng AI vào việc gì" (2–3 dòng, bắt bu�
 - Cấn Xuân Nghĩa phụ trách; Codex hỗ trợ tìm kiếm, đọc và tổng hợp nguồn công khai tại `evidence/secondary-research.md`.
 - Báo cáo ghi đơn vị thực hiện/công bố, thời gian khảo sát, cỡ mẫu, trang và link gốc; giữ trích dẫn công khai cùng ngữ cảnh và giới hạn.
 - Không tạo phản hồi khảo sát, người phỏng vấn hoặc số liệu nội bộ. Chưa xác minh bộ dữ liệu khảo sát/phỏng vấn mà thành viên khác đã cập nhật. Nghĩa cần kiểm nguồn và giải thích được các mẫu số trước khi dùng báo cáo.
+
+## Bổ sung 28/11/2026 — biên tập ba ghi chép phỏng vấn
+
+- Người dùng cung cấp nội dung P1–P3, số liệu và hai câu trích mỗi người, đồng thời xác nhận cả ba ngoài nhóm Aliba6. Codex biên tập cấu trúc theo GUIDE, giữ trích dẫn, tách số nghe được với phép tính và tổng hợp theo vai.
+- Không lấy nội dung từ ba kịch bản luyện tập trước đó để bổ sung lời kể. Các biên bản mới thay hồ sơ ứng viên, chưa xác nhận ánh xạ với dòng Google Form.
+- Chưa nhận/nghe bản ghi âm; ngày giờ, hình thức và người hỏi chưa được cung cấp. Người phụ trách kiểm lại: Cấn Xuân Nghĩa.
