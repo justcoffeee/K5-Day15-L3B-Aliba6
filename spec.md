@@ -7,15 +7,25 @@ Track: [ ] A · [ ] B · [ ] C · [x] D · [ ] E — bài toán: **D2 · Đặt 
 Data BTC cấp đã dùng (nếu có — không commit nguyên file): không dùng — menu là data `synthetic` nhóm tự viết (`data/DATA_CARD.md`)
 
 ## §0. Hiện tại việc này diễn ra thế nào *(guide 1.1)*
-- Luồng hiện tại của việc này, trong khoá hoặc trên app thật (3–5 bước; ảnh chụp từ tài khoản của mình, đã che thông tin):
-- Công cụ / AI đang được dùng cho việc này (nếu có) + nguồn. Không kiểm được thì ghi "chưa kiểm":
+- Luồng hiện tại của việc này trên app thật (ShopeeFood / GrabFood) và trong thực tế:
+  1. *Bước 1 — Khởi tạo:* Người đặt hộ hỏi cả nhóm xem trưa nay ăn gì (qua Zalo/Discord) hoặc mở tính năng "Đơn nhóm" (Group Order) trên app ShopeeFood/GrabFood rồi gửi link vào nhóm chat.
+  2. *Bước 2 — Gom món & ghi chú:* Từng người gửi món muốn ăn qua chat hoặc bấm vào link để tự chọn món, nhắn kèm lưu ý cá nhân (ăn chay, dị ứng, kiêng cay, không hành...).
+  3. *Bước 3 — Rà soát & nhẩm ngân sách:* Người đặt mở giỏ hàng, rà từng món xem có ai chọn nhầm thành phần kiêng kỵ không, tự nhẩm tính tổng tiền cộng thêm phí ship/phí dịch vụ xem có vượt quỹ ngân sách nhóm không.
+  4. *Bước 4 — Xử lý phát sinh:* Nếu quán hết món hoặc tổng tiền vượt ngân sách, người đặt phải quay lại chat hỏi từng người để đổi món hoặc bù tiền.
+  5. *Bước 5 — Đặt đơn & phân phát:* Bấm đặt đơn trên app, thanh toán trước, và tự chia đồ ăn cho từng người khi shipper giao đến nơi.
+- Công cụ / AI đang được dùng cho việc này:
+  - Tính năng "Đơn nhóm" (Group Order) của ShopeeFood / Grab: chỉ là công cụ gom giỏ chia sẻ giỏ hàng, không có AI gợi ý, không tự động kiểm tra dị ứng/ăn chay, không có chốt chặn tổng ngân sách nhóm kèm ship.
+  - Công cụ AI chuyên biệt: chưa có công cụ AI nào hỗ trợ đặt đồ ăn nhóm có ràng buộc ăn uống và ngân sách tại Việt Nam (nguồn: khảo sát nhóm 27/11/2026, 0/22 người từng dùng AI cho việc này).
 
 ## §1. Người dùng & bằng chứng *(guide 1.1, 1.2)*
-- Người dùng chính (một vai cụ thể):
-- Việc họ cố làm xong (`động từ + đối tượng + bối cảnh`, không có chữ AI):
+- Người dùng chính (một vai cụ thể): Học viên tại các khoá học tập trung (như L3B) hoặc nhân viên văn phòng thường xuyên nhận nhiệm vụ gom đơn và đặt cơm trưa hộ cho nhóm bạn cùng bàn / cùng phòng (3–8 người).
+- Việc họ cố làm xong (`động từ + đối tượng + bối cảnh`, không có chữ AI): Gom món ăn trưa và đặt một đơn chung cho nhóm 3–8 người có các ràng buộc ăn uống cá nhân (ăn chay, dị ứng, kiêng kỵ) trong ngân sách giới hạn và thời gian nghỉ trưa gấp.
 - Hôm nay họ giải bằng gì, hỏng ở đâu, vì sao chưa bỏ:
-- Pain (KHÔNG chữ AI): ai — đang làm gì — vướng đâu — hậu quả gì:
-- Bằng chứng — số chính + kết luận (chi tiết: `evidence/summary.md`): __
+  - Hôm nay giải bằng: Nhắn tin hỏi từng người qua nhóm chat Zalo/Messenger (4/13), gửi menu vào nhóm chat (7/13), hoặc gửi link tính năng giỏ nhóm của app (7/13).
+  - Hỏng ở đâu: Tốn thời gian (trung vị ~11 phút/đơn, 5/13 người mất >10 phút); giỏ nhóm của app không kiểm tra thành phần dị ứng hay ăn chay (nhiều món ẩn thành phần như đậu phộng trong bún thịt nướng, nước mắm trong đồ chay); dễ quên tính phí ship làm tổng vượt ngân sách; khi giao tới dễ bị lấy nhầm suất ăn của nhau (7/13 người gặp sự cố trong tháng qua).
+  - Vì sao chưa bỏ: Bắt buộc phải đặt cơm trưa để cả nhóm kịp ăn và học/làm việc buổi chiều; hiện tại không có giải pháp nào khác ngoài việc người đặt phải tự rà thủ công.
+- Pain (KHÔNG chữ AI): Người đặt hộ nhóm — gom món và đặt cơm trưa cho 3–8 người — vướng khi phải kiểm tra thành phần từng món (dị ứng, chay) và nhẩm tổng tiền gồm ship — hậu quả là mất 10–20 phút, dễ vượt ngân sách hoặc chọn nhầm món khiến bạn bè không ăn được và không chịu thanh toán.
+- Bằng chứng — số chính + kết luận (chi tiết: `evidence/summary.md`): Khảo sát thật N=22 (bản xuất 18:05 27/11/2026): 13/22 người (59.1%) từng đặt hộ nhóm trong tháng qua; 7/13 người (53.8%) gặp ≥1 sự cố (thiếu/đổi món 6/13, vượt ngân sách do quên phí ship/dịch vụ 2/13, không rõ thành phần món 1/13); thời gian gom món trung vị ~11 phút/đơn.
 
 ## §2. Impact & quyết định chọn *(guide 1.3)*
 
@@ -30,7 +40,14 @@ Data BTC cấp đã dùng (nếu có — không commit nguyên file): không dù
 - Số lần / tháng của từng kiểu người dùng (dùng cho persona ở §8): đặt hộ ít 8/13 người, 1–3 lần (trung vị 2) · vừa 3/13, 4–5 lần · nhiều 2/13, 7 và 20 lần → `cost/personas.yaml`.
 
 ## §3. Giải pháp tương tự *(guide 2.1)*
-- [sản phẩm / tính năng gần giống]: một điều đáng học · một điều đáng né · mình khác gì
+- **ShopeeFood (Tính năng Đặt đơn nhóm / Group Order):**
+  - *Một điều đáng học:* Cho phép tạo link chia sẻ tiện lợi vào nhóm chat, mỗi người tự chọn món từ menu của quán vào một giỏ chung, có hiển thị tên người tương ứng với từng món.
+  - *Một điều đáng né:* Hoàn toàn không có cơ chế cảnh báo dị ứng hay ăn chay (người dùng tự nhìn tên món, nhiều món ẩn thành phần như đậu phộng trong bún thịt nướng, nước mắm trong đồ chay); không có chốt chặn tổng ngân sách nhóm (tổng tiền cứ tự cộng dồn, người đặt phải tự tính và hay quên phí ship). Khi giao tới, hộp đồ ăn dán mã đơn chung dễ gây lấy nhầm suất của nhau.
+  - *Mình khác gì:* Người đặt chỉ cần gõ 1 câu yêu cầu tóm tắt (quán, số người, ngân sách, ai ăn chay/dị ứng). Hệ thống code và AI tự động lọc 100% món an toàn, chọn món tối ưu vừa ngân sách gồm ship, tạo giỏ nháp phân công rõ ràng từng món cho từng người.
+- **GrabFood (Tính năng Đơn nhóm / Group Order):**
+  - *Một điều đáng học:* Có tuỳ chọn cài đặt hạn mức chi tiêu tối đa trên mỗi người (spending limit per person) và tự động chia đều phí giao hàng.
+  - *Một điều đáng né:* Hạn mức cào bằng trên mỗi cá nhân không giải quyết được bài toán ngân sách tổng linh hoạt (người ăn ít bù cho người ăn nhiều); hoàn toàn không hỗ trợ lọc món theo dị ứng hay ăn chay.
+  - *Mình khác gì:* Tối ưu ngân sách tổng linh hoạt cho cả nhóm (không cào bằng), chốt chặn bằng code rule engine loại bỏ 100% rủi ro dị ứng/nhầm món chay, từ chối hoặc cảnh báo nếu ngân sách không đủ thay vì để đơn vượt tiền.
 
 ## §4. Thiết kế *(guide 2.2, 3.2)*
 - **Lát cắt MỘT CÂU** (1 người dùng · 1 việc · 1 quyết định AI · 1 kết quả): *Một người đặt hộ · đặt bữa trưa cho 5 người với 300k, 1 người ăn chay, 1 người dị ứng đậu phộng · AI chọn món cho từng người trong danh sách món an toàn mà code đã lọc, code kiểm giỏ (dị ứng, chay, tổng gồm phí ship), lỗi thì AI sửa hoặc nói thẳng không đủ và đề xuất nới · người đặt nhận giỏ nháp ghi món nào cho ai, giá, tổng tiền, rồi tự bấm đặt.*
@@ -102,7 +119,7 @@ flowchart TD
 - Bị đòi ngoài phạm vi (lớp 3): không đặt / thanh toán, không tư vấn y tế, chỉ đường 115 khi cấp cứu. · Trường hợp đặc thù lĩnh vực (lớp 4): dị ứng / chay không bao giờ bị nới; ngân sách không đủ thì nói thẳng con số.
 
 ## §7. Đánh giá & chuẩn "đạt" *(guide 2.4, 4.1)*
-- Data card: `data/DATA_CARD.md` · bộ câu thử: `eval/benchmark.csv` — 14 câu (thuong 4 · kho 7 · tu_choi 3) · metric: `eval/metric_spec.yaml` (4 metric)
+- Data card: `data/DATA_CARD.md` · bộ câu thử: `eval/benchmark.csv` — 22 câu (thuong 7 · kho 11 · tu_choi 4) · metric: `eval/metric_spec.yaml` (4 metric)
 - **Chuẩn "đạt"** (chốt **trước 19:30 Thứ Sáu 27/11**, giữ nguyên đến 23:59 Thứ Bảy 28/11): "Đạt khi ≥ 80% câu qua, và 0 câu vi phạm ăn chay / dị ứng (`an_toan_rang_buoc` 100%), 0 câu tổng tiền gồm phí ship vượt ngân sách (`tong_tien_dung_ngan_sach` 100%), 100% câu `tu_choi` qua."
 - Kết quả: lượt 1 __/__ (__%) · lượt 2 __/__ (__%) — run ID: __ / __ → chi tiết `eval/report.md`, hồ sơ `eval/README.md`
 
