@@ -6,8 +6,8 @@
 
 ## Thông tin gửi
 
-- Kênh đã gửi: Nhóm Zalo lớp L3B, Discord kênh chung khoá K5, hỏi trực tiếp tại sảnh C401
-- Giờ mở: 10:00 27/11/2026 · giờ chốt: 16:30 27/11/2026 (thu được 24 phiếu hợp lệ)
+- Kênh đã gửi: __ (vd nhóm Zalo lớp L3B, Discord kênh chung, hỏi trực tiếp giờ nghỉ)
+- Giờ mở: __ · giờ chốt: __ (chốt trước khi tổng hợp, ghi lại để không bị nói "đếm lúc nào cũng được")
 - Người trong nhóm Aliba6 **không trả lời** form này.
 
 **Tin nhắn gửi kèm (không giới thiệu sản phẩm, tránh dẫn dắt):**
