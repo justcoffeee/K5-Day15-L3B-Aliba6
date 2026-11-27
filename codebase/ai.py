@@ -48,6 +48,7 @@ API_KEY = (os.environ.get("API_KEY") or "").strip()
 
 SHOW_RAW = False   # đổi thành True để in nguyên phản hồi của API khi cần tìm tên trường
 URL_OPENAI = "https://api.openai.com/v1/chat/completions"
+URL_DEEPSEEK = "https://api.deepseek.com/chat/completions"   # API định dạng OpenAI
 URL_CLAUDE = "https://api.anthropic.com/v1/messages"
 URL_OLLAMA = "http://localhost:11434/api/chat"
 
@@ -67,9 +68,9 @@ def post_json(url, headers, body, timeout=60):
     return data
 
 
-def call_openai(system, user):
+def call_openai(system, user, url=URL_OPENAI):
     messages = ([{"role": "system", "content": system}] if system else []) + [{"role": "user", "content": user}]
-    data = post_json(URL_OPENAI, {"Authorization": "Bearer " + API_KEY},
+    data = post_json(url, {"Authorization": "Bearer " + API_KEY},
                      {"model": MODEL_NAME, "messages": messages})
     u = data["usage"]
     return {"text": data["choices"][0]["message"]["content"],
@@ -100,13 +101,15 @@ def call_model(system: str, user: str) -> dict:
         return {"text": "[câu trả lời giả — chưa nối model] " + last[:60], "model": "fake", "tokens_in": 0, "tokens_out": 0}
     if MODEL_PROVIDER == "openai":
         r = call_openai(system, user)
+    elif MODEL_PROVIDER == "deepseek":
+        r = call_openai(system, user, URL_DEEPSEEK)
     elif MODEL_PROVIDER == "anthropic":
         r = call_claude(system, user)
     elif MODEL_PROVIDER == "ollama":
         r = call_ollama(system, user)
     else:
         raise NotImplementedError(
-            "chưa viết phần gọi model cho MODEL_PROVIDER=%s — dùng openai / anthropic / ollama, "
+            "chưa viết phần gọi model cho MODEL_PROVIDER=%s — dùng openai / deepseek / anthropic / ollama, "
             "hoặc thêm hàm theo docs/connect-model.md mục 2.4" % MODEL_PROVIDER)
     return {"text": r["text"], "model": MODEL_NAME,
             "tokens_in": int(r["tokens_in"]), "tokens_out": int(r["tokens_out"])}
