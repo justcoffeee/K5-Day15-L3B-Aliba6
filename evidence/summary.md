@@ -8,13 +8,13 @@
 | Nguồn | Đạt ngưỡng? | File |
 |---|---|---|
 | Đào data (x/N, %, cách đếm chạy lại được, ≥5 ví dụ) | ☐ | `evidence/data-mining.md` |
-| Phỏng vấn (≥3 người ngoài nhóm, đúng người dùng) | Đã nhận 3 ghi chép; người dùng xác nhận ngoài nhóm, đủ điều kiện đặt hộ; chờ bổ sung ngày giờ/hình thức cuộc hỏi | `evidence/interviews/P1.md`, `P2.md`, `P3.md` |
+| Phỏng vấn (≥3 người ngoài nhóm, đúng người dùng) | Đã nhận 3 ghi chép; Nghĩa xác nhận ngoài nhóm, đủ điều kiện đặt hộ; chờ bổ sung ngày giờ/hình thức cuộc hỏi | `evidence/interviews/P1.md`, `P2.md`, `P3.md` |
 | Khảo sát (≥20 người ngoài nhóm, đúng người dùng) | ☑ 22 phiếu (đếm lần 1, 18:05 27/11) — 13 người đúng người dùng (đã đặt hộ nhóm trong tháng) | `evidence/survey/results.csv` · cách đếm: `evidence/survey/count.py` |
 
 ## 2. Số chính
 
 - Đào data: __/__ (__%) …
-- Phỏng vấn (ghi chép người dùng cung cấp): **P1, P2 gặp pain; P3 không báo sự cố**. Mô tả cả ba hồ sơ: **2/3** ghi nhận pain, không phải tỷ lệ đại diện cho một nhóm vai đồng nhất. Theo vai: **sinh viên 1/2**, **admin văn phòng 1/1**. Tần suất P1 khoảng 6, P2 3, P3 khoảng 4 lần/tháng. Gom món: P1 khoảng 20 phút; P2 khoảng 12 phút; P3 khoảng 3 phút sau khi chọn quán, chưa có tổng thời gian chọn quán đến đặt. Ngày giờ, hình thức và người hỏi còn cần bổ sung; chưa đối chiếu bản ghi gốc.
+- Phỏng vấn (ghi chép của Nghĩa): **P1, P2 gặp pain; P3 không báo sự cố**. Mô tả cả ba hồ sơ: **2/3** ghi nhận pain, không phải tỷ lệ đại diện cho một nhóm vai đồng nhất. Theo vai: **sinh viên 1/2**, **admin văn phòng 1/1**. Tần suất P1 khoảng 6, P2 3, P3 khoảng 4 lần/tháng. Gom món: P1 khoảng 20 phút; P2 khoảng 12 phút; P3 khoảng 3 phút sau khi chọn quán, chưa có tổng thời gian chọn quán đến đặt. Ngày giờ, hình thức và người hỏi còn cần bổ sung; chưa đối chiếu bản ghi gốc.
 - Khảo sát (đếm lần 1, bản xuất 18:05 27/11/2026, chạy lại: `python evidence/survey/count.py`): **N = 22** — không phiếu nào của thành viên Aliba6 (đã hỏi lại cả nhóm), không phiếu trùng
   - Từng đặt hộ nhóm ≥3 người trong 1 tháng qua: **13/22 (59.1%)** — giả thuyết ≥50%: đạt.
   - Trong 13 người đó, gặp ≥1 sự cố (nhầm món cho người ăn chay / dị ứng · vượt dự tính · thiếu / phải đổi món): **7/13 (53.8%)** — giả thuyết ≥1/3: đạt.
@@ -37,11 +37,11 @@ Phỏng vấn nhiều vai thì đếm theo từng vai, không cộng chung.
 1. "Món bị sai, bạn tôi không chịu ăn và thanh toán món đấy" — phiếu khảo sát dòng 10 (`results.csv`)
 2. "mình bị người khác lấy nhầm suất ăn và phải nhận 1 suất đồ ăn khác" — phiếu khảo sát dòng 3 (`results.csv`)
 3. "Đơn vị không giao hàng" — phiếu khảo sát dòng 9 (`results.csv`) *(lỗi phía giao hàng, ngoài lát cắt)*
-4. "Ức chế nhất là hỏi thì bảo ăn gì cũng được, đến lúc mình bấm đặt xong xuôi rồi lại nhắn 'cho tao đổi sang cơm gà nhé'." — P1, ghi chép phỏng vấn do người dùng cung cấp (`interviews/P1.md`)
-5. "Mình tưởng dùng giỏ nhóm là xong, ai ngờ người ta vẫn nhắn ghi chú kiêng sữa ở bên Zalo, mình lỡ tay bấm đặt luôn thế là phải tự bỏ tiền túi mua lại cốc khác." — P2, ghi chép phỏng vấn do người dùng cung cấp (`interviews/P2.md`)
+4. "Ức chế nhất là hỏi thì bảo ăn gì cũng được, đến lúc mình bấm đặt xong xuôi rồi lại nhắn 'cho tao đổi sang cơm gà nhé'." — P1, ghi chép phỏng vấn của Nghĩa (`interviews/P1.md`)
+5. "Mình tưởng dùng giỏ nhóm là xong, ai ngờ người ta vẫn nhắn ghi chú kiêng sữa ở bên Zalo, mình lỡ tay bấm đặt luôn thế là phải tự bỏ tiền túi mua lại cốc khác." — P2, ghi chép phỏng vấn của Nghĩa (`interviews/P2.md`)
 6. "Khó mỗi cái là không biết ăn gì, chứ chốt được quán rồi thì bấm 3 phút là xong đơn." — P3, trường hợp ngược giả thuyết (`interviews/P3.md`)
 
-*Mục 4–6 được giữ nguyên theo ghi chép người dùng cung cấp, chưa đối chiếu ghi âm. Không dùng: phiếu dòng 17 (câu đùa); phiếu dòng 21 chỉ tick ô "không biết thành phần", không có lời kể nên không phải trích dẫn.*
+*Mục 4–6 được giữ nguyên theo ghi chép của Nghĩa, chưa đối chiếu ghi âm. Không dùng: phiếu dòng 17 (câu đùa); phiếu dòng 21 chỉ tick ô "không biết thành phần", không có lời kể nên không phải trích dẫn.*
 
 ## 4. Các nguồn có khớp nhau không
 
@@ -63,7 +63,7 @@ Giả thuyết ở `evidence/hypothesis.md` (đếm lần 1, N = 22): **đạt h
 ## 6. Nguồn khảo sát công khai bổ sung — phần Cấn Xuân Nghĩa
 
 Báo cáo [nghiên cứu nguồn công khai](secondary-research.md) ghi rõ hai khảo sát do **ezCater** công bố năm **2023** và **2024**, mẫu người thường đặt đồ ăn cho nơi làm việc, vị trí trang và URL báo cáo gốc. Đây là số liệu bên ngoài, **không** phải khảo sát của nhóm và không cộng vào mẫu số của nhóm. Năm ví dụ công khai có trích dẫn và ngữ cảnh riêng; không phải người Aliba6 đã phỏng vấn.
-## 7. Đối chiếu ba cuộc hỏi — cập nhật từ ghi chép người dùng cung cấp
+## 7. Đối chiếu ba cuộc hỏi — cập nhật từ ghi chép của Nghĩa
 
 - P1 và P2 có chi phí phối hợp/chọn món, nhưng P1 tránh được nhầm món bằng cách tách đơn; P2 vẫn có lỗi yêu cầu riêng dù dùng giỏ nhóm.
 - P3 là phản chứng cần giữ: nhóm nhỏ, ngồi cạnh nhau, quán quen không báo nhầm món hoặc vượt tiền. Không suy rộng cho mọi nhóm ≤4 người. Ba phút chưa bao gồm rõ thời gian chọn quán.

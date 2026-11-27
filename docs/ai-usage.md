@@ -25,6 +25,6 @@ README của nhóm có mục "Dùng AI vào việc gì" (2–3 dòng, bắt bu�
 
 ## Bổ sung 28/11/2026 — biên tập ba ghi chép phỏng vấn
 
-- Người dùng cung cấp nội dung P1–P3, số liệu và hai câu trích mỗi người, đồng thời xác nhận cả ba ngoài nhóm Aliba6. Codex biên tập cấu trúc theo GUIDE, giữ trích dẫn, tách số nghe được với phép tính và tổng hợp theo vai.
+- Cấn Xuân Nghĩa cung cấp nội dung P1–P3, số liệu và hai câu trích mỗi người, đồng thời xác nhận cả ba ngoài nhóm Aliba6. Codex biên tập cấu trúc theo GUIDE, giữ trích dẫn, tách số nghe được với phép tính và tổng hợp theo vai.
 - Không lấy nội dung từ ba kịch bản luyện tập trước đó để bổ sung lời kể. Các biên bản mới thay hồ sơ ứng viên, chưa xác nhận ánh xạ với dòng Google Form.
 - Chưa nhận/nghe bản ghi âm; ngày giờ, hình thức và người hỏi chưa được cung cấp. Người phụ trách kiểm lại: Cấn Xuân Nghĩa.
