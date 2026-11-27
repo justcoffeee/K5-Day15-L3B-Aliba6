@@ -1,48 +1,48 @@
 # Tổng hợp bằng chứng pain
 
-> Điền ở guide bước 1.2, xong trước **CP3 10:00 Thứ Bảy 28/11**. Chấm ở rubric R1.
-> Ba nguồn ngang nhau — tối thiểu **≥1 nguồn đạt ngưỡng**. Mạnh nhất: đào data ra insight → hỏi người dùng để kiểm lại (hoặc ngược lại).
+> Cập nhật CP2 (27/11/2026) · Nhóm Aliba6 · Track D2.
 
 ## 1. Nguồn đã dùng
 
 | Nguồn | Đạt ngưỡng? | File |
 |---|---|---|
-| Đào data (x/N, %, cách đếm chạy lại được, ≥5 ví dụ) | ☐ | `evidence/data-mining.md` |
-| Phỏng vấn (≥3 người ngoài nhóm, đúng người dùng) | ☐ | `evidence/interviews/P1.md`… |
-| Khảo sát (≥20 người ngoài nhóm, đúng người dùng) | ☐ | `evidence/survey/` |
+| Khảo sát (≥20 người ngoài nhóm, đúng người dùng) | ☑ Đạt (N = 24 người ngoài nhóm) | `evidence/survey/results.csv` |
+| Phỏng vấn (≥3 người ngoài nhóm, đúng người dùng) | ☑ Đạt (3/3 người ngoài nhóm: P1, P2, P3) | `evidence/interviews/P1.md`, `P2.md`, `P3.md` |
 
 ## 2. Số chính
 
-- Đào data: __/__ (__%) …
-- Phỏng vấn: __/3 người gặp *(n nhỏ không ghi %)* · số lần / tháng: P1 __, P2 __, P3 __ · mỗi lần mất __–__ phút
-- Khảo sát: n = __ · __/__ (__%) …
-
-Phỏng vấn nhiều vai thì đếm theo từng vai, không cộng chung.
+- **Khảo sát:**
+  - Quy mô mẫu: **N = 24** học viên L3A, L3B ngoài nhóm Aliba6.
+  - Tỉ lệ từng đặt hộ nhóm ≥3 người trong 1 tháng qua: **24/24 (100%)**.
+  - Tỉ lệ trong nhóm có người ăn chay / dị ứng / kiêng: **18/24 (75.0%)**.
+  - Tỉ lệ từng gặp sự cố (nhầm món, vượt tiền, thiếu món): **20/24 (83.3%)** — vượt xa giả thuyết ban đầu (≥1/3).
+  - Tỉ lệ mất thời gian gom món > 10 phút: **18/24 (75.0%)**, trong đó 5/24 mất > 20 phút.
+  - Phân phối tần suất đặt hộ/tháng: Ít (1–3 lần): 11 người (45.8%) · Vừa (4–5 lần): 9 người (37.5%) · Nhiều (≥6 lần): 4 người (16.7%).
+- **Phỏng vấn:**
+  - **3/3 người** đều gặp sự cố nghiêm trọng (nhầm chất dị ứng đậu phộng/hải sản, vượt ngân sách phải bù tiền túi, mất 18–28 phút/đơn).
 
 | | Vai | Gặp pain? | Số lần / 1 tháng qua | Lần gần nhất mất | Đang xoay xở bằng |
 |---|---|---|---|---|---|
-| P1 | | | | | |
-| P2 | | | | | |
-| P3 | | | | | |
+| P1 | Học viên L3B, đặt cơm cho nhóm lab 5 người | Có | 6 lần | 25 phút | Nhắn tin Zalo rồi tự nhẩm cộng tiền |
+| P2 | Học viên L3A, đặt cơm nhóm Capstone 4 người | Có | 4 lần | 18 phút | Dò từng dòng mô tả món trên app |
+| P3 | Học viên L3B, đặt cơm nhóm học dồn 6 người | Có | 8 lần | 28 phút | Giỏ nhóm app Grab/ShopeeFood |
 
-## 3. ≥5 trích dẫn hoặc ví dụ nguyên văn (có nguồn, bỏ tên)
+## 3. ≥5 trích dẫn hoặc ví dụ nguyên văn (từ khảo sát và phỏng vấn)
 
-1. "…" — P_ / dòng data __ / phiếu khảo sát __
-2.
-3.
-4.
-5.
+1. *"Nhóm có bạn dị ứng lạc nặng, mình đặt bún thịt nướng tưởng an toàn ai ngờ quán rắc đầy đậu phộng vụn lên trên, bạn ấy phải nhịn trưa ăn bánh mì ngọt."* — P1 & Phiếu khảo sát #2
+2. *"Một bạn dị ứng hải sản dặn không tôm mực, quán làm món có tôm khô băm nhỏ bên trong, bạn ấy ăn một miếng bị ngứa cổ họng ngay lập tức."* — P2 & Phiếu khảo sát #19
+3. *"Nhóm 6 người có 2 bạn ăn chay trường, tìm quán cơm thì không có đồ chay, sang quán chay thì mấy bạn nam kêu ăn không no, cãi nhau mất gần nửa tiếng trưa."* — P3 & Phiếu khảo sát #14
+4. *"Lúc tính tiền món thì vừa khít ngân sách 180k, đến lúc bấm thanh toán app cộng thêm tiền ship 28k với phụ phí làm mình toàn phải tự bù tiền túi."* — P1 & Phiếu khảo sát #1
+5. *"Mỗi lần nhận trách nhiệm đặt cơm trưa cho team là stress vì người ăn kiêng keto, người ăn chay, người dị ứng, vừa tính tiền vừa sợ nhầm."* — Phiếu khảo sát #20
 
 ## 4. Các nguồn có khớp nhau không
 
-Data nói __; người dùng nói __. Khớp / lệch ở đâu, vì sao: __
+- Khảo sát định lượng (N=24) và phỏng vấn định tính (P1–P3) **khớp nhau hoàn toàn**:
+  - Hơn 83% người đặt hộ từng gặp sự cố và 75% tốn >10 phút.
+  - Cả hai nguồn đều chỉ ra 2 rủi ro nhức nhối nhất: (1) Rủi ro sức khỏe do **thành phần ẩn trong món ăn** (đậu phộng trong bún thịt nướng, tôm khô trong cơm rang) mà người đặt không lường trước được; (2) Rủi ro tài chính do **quên tính phí ship** dẫn đến vượt ngân sách nhóm.
 
 ## 5. Kết luận
 
-Giả thuyết ở `evidence/hypothesis.md`: **đúng / sai / phải đổi** — vì __. Điều vẫn chưa biết: __
-
-## Lịch hẹn (dùng cho CP2 — chỉ ghi vai và giờ, không tên)
-
-| Vai | Giờ hẹn | Đã xong? |
-|---|---|---|
-| | | |
+- Giả thuyết ở `evidence/hypothesis.md`: **ĐÚNG VÀ NGHIÊM TRỌNG HƠN DỰ KIẾN.**
+- Tỉ lệ gặp sự cố thực tế đạt **83.3%** (so với giả thuyết ≥33.3%).
+- Điều này củng cố tính cấp thiết của giải pháp Track D2: Dùng code để tự động lọc sạch các món nguy hiểm trước khi AI chọn món và kiểm tra cứng tổng tiền gồm phí ship bằng code.

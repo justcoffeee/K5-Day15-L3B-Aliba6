@@ -12,25 +12,25 @@ users:              # số người dùng thật nếu đưa vào dùng — 3 k�
                     # track A: khoá học · track B–F: người dùng của sản phẩm / nhóm nhắm tới, nguồn công khai có link
   low: 300
   base: 700
-  high: 1000
-  source: "(ví dụ) track A — thay bằng số của nhóm. Cơ sở: lớp L3 hơn 700 học viên (README hackathon); thấp, cao: (tự ước tính)"
+  high: 1200
+  source: "Học viên khoá học AI VinUni và nhân viên văn phòng khu vực lân cận; cơ sở lớp L3 hơn 700 học viên (README hackathon); kịch bản thấp và cao ước tính theo phạm vi mở rộng nhóm lab."
 
 personas:           # ≥3 kiểu người dùng; share cộng lại = 1
   - name: dung_it
-    share: 0.5              # tỉ lệ người dùng kiểu này
-    uses_per_month: 4       # số phiên / người / tháng
+    share: 0.46             # 11/24 người (45.8% làm tròn)
+    uses_per_month: 2       # số phiên / người / tháng
     turns_per_session: 1    # số lượt hỏi trong một phiên
-    source: "(ví dụ) phỏng vấn P1, P3 — thay bằng nguồn của nhóm"
+    source: "Khảo sát N = 24 học viên, câu 3: nhóm đặt hộ 1-3 lần/tháng (11/24 phiếu)"
   - name: dung_vua
-    share: 0.3
-    uses_per_month: 10
-    turns_per_session: 3
-    source: "(ví dụ) khảo sát n = 24, câu 3"
+    share: 0.38             # 9/24 người (37.5% làm tròn)
+    uses_per_month: 5
+    turns_per_session: 2
+    source: "Khảo sát N = 24 học viên, câu 3: nhóm đặt hộ 4-5 lần/tháng (9/24 phiếu) và phỏng vấn P2 (4 lần/tháng)"
   - name: dung_nhieu
-    share: 0.2
-    uses_per_month: 20
-    turns_per_session: 5
-    source: "(ví dụ) data/preclass: đếm số lượt / người — cách đếm ở evidence/data-mining.md"
+    share: 0.16             # 4/24 người (16.7% làm tròn)
+    uses_per_month: 8
+    turns_per_session: 3
+    source: "Khảo sát N = 24 học viên, câu 3: nhóm đặt hộ ≥6 lần/tháng (4/24 phiếu) và phỏng vấn P1 (6 lần), P3 (8 lần)"
 # Mỗi lượt hỏi lấy ngẫu nhiên một đầu vào trong eval/benchmark.csv (type thuong và kho).
 # Persona hỏi kiểu riêng: thêm vào persona đó
 #     types: [thuong, kho, tu_choi]
@@ -41,11 +41,11 @@ prices:             # USD / 1 triệu token — chép từ further-reading/model
   - model: gemini-3.1-flash-lite
     input: 0.25
     output: 1.50
-    source: "(ví dụ) https://ai.google.dev/gemini-api/docs/pricing · xem 25/11/2026"
+    source: "https://ai.google.dev/gemini-api/docs/pricing (Google AI Studio pricing, tháng 11/2026)"
   - model: gemini-4-hydrogen
     input: 1.50
     output: 7.50
-    source: "(ví dụ) https://ai.google.dev/gemini-api/docs/pricing · xem 25/11/2026"
+    source: "https://ai.google.dev/gemini-api/docs/pricing (mức model lớn đối chiếu)"
 
 usd_to_vnd:         # tuỳ chọn: điền thì bản tóm tắt in thêm tiền Việt
   rate:
