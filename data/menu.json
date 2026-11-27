@@ -1,0 +1,41 @@
+{
+  "_ghi_chu": "synthetic — menu giả do nhóm Aliba6 tự viết tay, không phải menu quán thật. Mô tả ở data/DATA_CARD.md. ingredients = null nghĩa là quán không ghi thành phần.",
+  "phien_ban": "v1 · 27/11/2026",
+  "restaurants": [
+    {
+      "id": "com_mau",
+      "name": "Quán Cơm Mẫu",
+      "ship_fee": 20000,
+      "dishes": [
+        {"id": "C01", "name": "Cơm gà xối mỡ", "price": 45000, "ingredients": ["gao", "ga", "nuoc_mam"]},
+        {"id": "C02", "name": "Cơm sườn nướng", "price": 50000, "ingredients": ["gao", "heo", "nuoc_mam"]},
+        {"id": "C03", "name": "Cơm bò lúc lắc", "price": 60000, "ingredients": ["gao", "bo", "dau_nanh"]},
+        {"id": "C04", "name": "Cơm chiên dương châu", "price": 40000, "ingredients": ["gao", "trung", "heo", "tom"]},
+        {"id": "C05", "name": "Cơm đậu hũ sốt cà", "price": 35000, "ingredients": ["gao", "dau_hu", "ca_chua", "rau"]},
+        {"id": "C06", "name": "Cơm rau xào nấm", "price": 35000, "ingredients": ["gao", "rau", "nam", "dau_nanh"]},
+        {"id": "C07", "name": "Gỏi gà trộn lạc", "price": 45000, "ingredients": ["ga", "dau_phong", "rau", "nuoc_mam"]},
+        {"id": "C08", "name": "Xôi lạc", "price": 25000, "ingredients": ["gao_nep", "dau_phong"]},
+        {"id": "C09", "name": "Cơm cá kho", "price": 50000, "ingredients": ["gao", "ca", "nuoc_mam"]},
+        {"id": "C10", "name": "Mì xào chay", "price": 40000, "ingredients": ["bot_mi", "rau", "nam", "dau_nanh"]},
+        {"id": "C11", "name": "Cơm đặc biệt của quán", "price": 55000, "ingredients": null},
+        {"id": "C12", "name": "Canh chua tôm", "price": 30000, "ingredients": ["tom", "rau", "ca_chua", "nuoc_mam"]},
+        {"id": "C13", "name": "Cơm trứng ốp la", "price": 30000, "ingredients": ["gao", "trung", "nuoc_mam"]},
+        {"id": "C14", "name": "Bánh mì chả", "price": 25000, "ingredients": ["bot_mi", "heo"]}
+      ]
+    },
+    {
+      "id": "bun_mau",
+      "name": "Quán Bún Mẫu",
+      "ship_fee": 25000,
+      "dishes": [
+        {"id": "B01", "name": "Bún chả", "price": 45000, "ingredients": ["bun", "heo", "nuoc_mam"]},
+        {"id": "B02", "name": "Bún thịt nướng", "price": 45000, "ingredients": ["bun", "heo", "dau_phong", "nuoc_mam"]},
+        {"id": "B03", "name": "Bún bò Huế", "price": 55000, "ingredients": ["bun", "bo", "heo", "mam_tom"]},
+        {"id": "B04", "name": "Bún chay", "price": 40000, "ingredients": ["bun", "dau_hu", "nam", "rau"]},
+        {"id": "B05", "name": "Phở gà", "price": 45000, "ingredients": ["banh_pho", "ga", "nuoc_mam"]},
+        {"id": "B06", "name": "Bún riêu cua", "price": 45000, "ingredients": ["bun", "cua", "ca_chua", "mam_tom"]},
+        {"id": "B07", "name": "Nem rán (2 cái)", "price": 20000, "ingredients": null}
+      ]
+    }
+  ]
+}

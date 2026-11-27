@@ -6,12 +6,12 @@ README của nhóm có mục "Dùng AI vào việc gì" (2–3 dòng, bắt bu�
 
 | Việc | Công cụ AI | AI làm gì | Người kiểm/sửa gì | Ai phụ trách |
 |---|---|---|---|---|
-| Code bản chạy thử | | | | |
-| Prompt / thiết kế lời gọi mô hình | | | | |
+| Code bản chạy thử | Claude Code (Opus 5.5) | Viết `codebase/agent.py`, `tools.py` (parse_request, safe_dishes, validate_cart) | Cặp X đọc từng hàm, chạy 14 câu thử ở chế độ giả, sửa chỗ hiểu sai | Phạm Hoàng Huy, Lê Thanh Tùng |
+| Prompt / thiết kế lời gọi mô hình | Claude Code (Opus 5.5) | Viết nháp `SYSTEM` trong `agent.py` (bước chọn món) | Cặp X thử với model thật trước CP3 | Phạm Hoàng Huy |
 | Đào data (viết script đếm, gợi ý nhãn) | | | Kiểm tay __ dòng, khớp __ | |
-| Rà câu hỏi phỏng vấn / khảo sát | | Chỉ rà câu dẫn dắt | | |
-| Viết câu thử (benchmark) | | | Mỗi câu thử có `source`; câu thử AI viết được ghi rõ | |
-| Sinh data `synthetic` (nếu có) | | | Seed __ · kiểm tay __ dòng | |
+| Rà câu hỏi phỏng vấn / khảo sát | Claude Code (Opus 5.5) | Soạn nháp câu hỏi theo Mom Test, rà câu dẫn dắt | Cặp Y đọc lại, sửa câu chữ trước khi gửi | Cấn Xuân Nghĩa |
+| Viết câu thử (benchmark) | Claude Code (Opus 5.5) | Viết nháp 14 câu `tu_viet` từ tình huống khó track D2 | Mỗi câu thử có `source`; cặp Y kiểm expected / pass_criterion với menu; câu `nguoi_dung` lấy từ khảo sát, phỏng vấn — không để AI viết | Nguyễn Mạnh Hùng |
+| Sinh data `synthetic` (nếu có) | Claude Code (Opus 5.5) | Viết tay menu giả `data/menu.json` (không seed) | Seed: không dùng · kiểm tay __/21 món | Nguyễn Mạnh Hùng |
 | Chấm cột `pass` bằng LLM (nếu có) | | | Kiểm tra thủ công __ câu thử, khớp __/__ | |
 | Slide, văn bản | | | | |
 
