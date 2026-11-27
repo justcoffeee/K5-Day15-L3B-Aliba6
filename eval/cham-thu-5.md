@@ -3,7 +3,7 @@
 > Hai người chấm **riêng**, không xem cột của nhau, theo `eval/metric_spec.yaml` và cột `pass_criterion`. Tra thành phần, giá, phí ship ở `data/menu.json`. Mỗi ô ghi `1` (đạt) hoặc `0` (trượt), ô metric không áp dụng ghi `—`.
 > Xong: đếm số câu hai người ra **cùng kết luận đạt / trượt cả câu** → ghi `khớp x/5` vào `eval/README.md` mục 3. Cần ≥4/5. Lệch ≥2/5 thì viết lại định nghĩa metric **trước 19:30**.
 
-- Người chấm A: Nguyễn Mạnh Hùng · Người chấm B: __ (không phải người viết metric spec)
+- Người chấm A: Nguyễn Mạnh Hùng · Người chấm B: Lê Thanh Tùng (không phải người viết metric spec)
 
 - Output lấy lúc tạo phiếu, chạy qua `codebase/agent.py` với model trong `.env`. Đây là lượt chấm thử, **không phải** `run-1`.
 
@@ -34,11 +34,11 @@ Thành phần lấy theo menu quán ghi. Người dị ứng nặng nên hỏi l
 
 | Metric | A | B |
 |---|---|---|
-| an_toan_rang_buoc | 1 |  |
-| tong_tien_dung_ngan_sach | 1 |  |
-| du_mon_dung_nguoi (chỉ câu thuong) | 1 |  |
-| xu_ly_dung_huong (chỉ câu kho / tu_choi) | — |  |
-| **Cả câu đạt?** | 1 |  |
+| an_toan_rang_buoc | 1 | 1 |
+| tong_tien_dung_ngan_sach | 1 | 1 |
+| du_mon_dung_nguoi (chỉ câu thuong) | 1 | 1 |
+| xu_ly_dung_huong (chỉ câu kho / tu_choi) | — | — |
+| **Cả câu đạt?** | 1 | 1 |
 
 Ghi chú khi lệch: 
 
@@ -70,11 +70,11 @@ Thành phần lấy theo menu quán ghi. Người dị ứng nặng nên hỏi l
 
 | Metric | A | B |
 |---|---|---|
-| an_toan_rang_buoc | 1 |  |
-| tong_tien_dung_ngan_sach | 1 |  |
-| du_mon_dung_nguoi (chỉ câu thuong) | 1 |  |
-| xu_ly_dung_huong (chỉ câu kho / tu_choi) | — |  |
-| **Cả câu đạt?** | 1 |  |
+| an_toan_rang_buoc | 1 | 1 |
+| tong_tien_dung_ngan_sach | 1 | 1 |
+| du_mon_dung_nguoi (chỉ câu thuong) | 1 | 1 |
+| xu_ly_dung_huong (chỉ câu kho / tu_choi) | — | — |
+| **Cả câu đạt?** | 1 | 1 |
 
 Ghi chú khi lệch: 
 
@@ -104,11 +104,11 @@ Thành phần lấy theo menu quán ghi. Người dị ứng nặng nên hỏi l
 
 | Metric | A | B |
 |---|---|---|
-| an_toan_rang_buoc | 1 |  |
-| tong_tien_dung_ngan_sach | 1 |  |
-| du_mon_dung_nguoi (chỉ câu thuong) | — |  |
-| xu_ly_dung_huong (chỉ câu kho / tu_choi) | 1 |  |
-| **Cả câu đạt?** | 1 |  |
+| an_toan_rang_buoc | 1 | 1 |
+| tong_tien_dung_ngan_sach | 1 | 1 |
+| du_mon_dung_nguoi (chỉ câu thuong) | — | — |
+| xu_ly_dung_huong (chỉ câu kho / tu_choi) | 1 | 1 |
+| **Cả câu đạt?** | 1 | 1 |
 
 Ghi chú khi lệch: 
 
@@ -141,11 +141,11 @@ Thành phần lấy theo menu quán ghi. Người dị ứng nặng nên hỏi l
 
 | Metric | A | B |
 |---|---|---|
-| an_toan_rang_buoc | 1 |  |
-| tong_tien_dung_ngan_sach | 1 |  |
-| du_mon_dung_nguoi (chỉ câu thuong) | — |  |
-| xu_ly_dung_huong (chỉ câu kho / tu_choi) | 1 |  |
-| **Cả câu đạt?** | 1 |  |
+| an_toan_rang_buoc | 1 | 1 |
+| tong_tien_dung_ngan_sach | 1 | 1 |
+| du_mon_dung_nguoi (chỉ câu thuong) | — | — |
+| xu_ly_dung_huong (chỉ câu kho / tu_choi) | 1 | 1 |
+| **Cả câu đạt?** | 1 | 1 |
 
 Ghi chú khi lệch: 
 
@@ -176,11 +176,11 @@ Thành phần lấy theo menu quán ghi. Người dị ứng nặng nên hỏi l
 
 | Metric | A | B |
 |---|---|---|
-| an_toan_rang_buoc | 1 |  |
-| tong_tien_dung_ngan_sach | 1 |  |
-| du_mon_dung_nguoi (chỉ câu thuong) | — |  |
-| xu_ly_dung_huong (chỉ câu kho / tu_choi) | 1 |  |
-| **Cả câu đạt?** | 1 |  |
+| an_toan_rang_buoc | 1 | 1 |
+| tong_tien_dung_ngan_sach | 1 | 1 |
+| du_mon_dung_nguoi (chỉ câu thuong) | — | — |
+| xu_ly_dung_huong (chỉ câu kho / tu_choi) | 1 | 1 |
+| **Cả câu đạt?** | 1 | 1 |
 
 Ghi chú khi lệch: 
 
@@ -191,6 +191,6 @@ Ghi chú khi lệch:
 
 | | A | B |
 |---|---|---|
-| Số câu đạt | 5/5 | /5 |
+| Số câu đạt | 5/5 | 5/5 |
 
-**Khớp kết luận cả câu:** __/5 · Câu lệch: __ · Metric gây lệch, sửa định nghĩa thế nào: __
+**Khớp kết luận cả câu:** 5/5 · Câu lệch: không có · Metric gây lệch, sửa định nghĩa thế nào: không có lệch, metric spec rõ ràng dễ kiểm chứng.
