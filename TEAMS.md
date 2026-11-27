@@ -11,9 +11,10 @@
 
 | STT | Họ và tên | Mã học viên | Vai trò | Phần việc chính |
 |---|---|---|---|---|
-| 1 | ____ | ____ | Đội trưởng | ____ |
-| 2 | ____ | ____ | Thành viên | ____ |
-| 3 | ____ | ____ | Thành viên | ____ |
+| 1 | Phạm Hoàng Huy | 2A202603836 | Đội trưởng | Cặp X: luồng chính bản chạy thử, nối model, chỗ chặn rủi ro |
+| 2 | Lê Thanh Tùng | 2A202603819 | Thành viên | Cặp X: công cụ get_menu, validate_cart, mô phỏng chi phí |
+| 3 | Cấn Xuân Nghĩa | 2A202603805 | Thành viên | Cặp Y: khảo sát, phỏng vấn, đào review, tổng hợp bằng chứng |
+| 4 | Nguyễn Mạnh Hùng | 2A202603852 | Thành viên | Cặp Y: data card, menu giả có seed, bộ câu thử, metric spec |
 
 **Quy tắc điền**
 - **Lớp:** `L3A` hoặc `L3B`. **Track:** một chữ `A` (EdTech), `B` (Y tế), `C` (Du lịch), `D` (Thương mại điện tử), `E` (Tài chính) hoặc `F` (Làn khác). **Link repo:** link GitHub công khai của nhóm.
