@@ -35,11 +35,11 @@ Một dataset: menu giả 2 quán (`data/menu.json`, `synthetic`, nhóm tự vi�
 
 | Lượt | Run ID | Model | Cấu hình (prompt / công cụ / thay đổi) | Đạt / tổng | % | Đạt chuẩn? |
 |---|---|---|---|---|---|---|
-| 1 | `run-1@20261127-232123` | `qwen/qwen3.5-flash:free` (XKIRO) | Bộ câu 22 câu; prompt và tools nguyên bản v1 | 17/22 | 77.3% | Chưa đạt (chuẩn ≥80%, 100% tu_choi) |
+| 1 | `run-1@20261127-232123` | `qwen/qwen3.5-flash:free` (XKIRO) | Bộ câu 22 câu; prompt và tools nguyên bản v1 | 16/22 | 72.7% | Chưa đạt (72.7% < 80%; tu_choi 3/4; 2 câu vi phạm dị ứng / chay: B19, B22) |
 | 2 | | | | __/__ | | |
 
 Lượt chạy lại vì lỗi kỹ thuật, lượt sau CP4: ghi thêm dòng, không sửa dòng cũ.
 
 ## 6. Lỗi chính
 
-Lượt 1 đạt 17/22 (77.3%). Hai nhóm lỗi chính: (1) Regex parser tiếng Việt chưa nhận diện được đại từ số lượng tự nhiên ("một bạn dị ứng", "có 2 bạn ăn chay") gây lọt dị ứng (B22) và nhận nhầm tên (B19); (2) Code fallback tự hạ món sang đồ ăn vặt/ăn kèm để ép vừa ngân sách thay vì từ chối khi không đủ tiền suất chính (B17, B20). Chi tiết ở `eval/report.md`.
+Lượt 1 đạt 16/22 (72.7%) sau khi chấm lại B15 (giỏ 7 người, đề 6). **2 câu vi phạm ăn chay / dị ứng (B19, B22)** — trượt điều kiện cứng của chuẩn "đạt". Hai nhóm lỗi chính: (1) Regex parser tiếng Việt chưa nhận diện được đại từ số lượng tự nhiên ("một bạn dị ứng", "có 2 bạn ăn chay") gây lọt dị ứng (B22) và nhận nhầm tên (B19); (2) Code fallback tự hạ món sang đồ ăn vặt/ăn kèm để ép vừa ngân sách thay vì từ chối khi không đủ tiền suất chính (B17, B20). Chi tiết ở `eval/report.md`.

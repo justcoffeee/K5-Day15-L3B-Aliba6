@@ -15,14 +15,14 @@ Data BTC cấp đã dùng (nếu có — không commit nguyên file): không dù
   5. *Bước 5 — Đặt đơn & phân phát:* Bấm đặt đơn trên app, thanh toán trước, và tự chia đồ ăn cho từng người khi shipper giao đến nơi.
 - Công cụ / AI đang được dùng cho việc này:
   - Tính năng "Đơn nhóm" (Group Order) của ShopeeFood / Grab: chỉ là công cụ gom giỏ chia sẻ giỏ hàng, không có AI gợi ý, không tự động kiểm tra dị ứng/ăn chay, không có chốt chặn tổng ngân sách nhóm kèm ship.
-  - Công cụ AI chuyên biệt: chưa có công cụ AI nào hỗ trợ đặt đồ ăn nhóm có ràng buộc ăn uống và ngân sách tại Việt Nam (nguồn: khảo sát nhóm 27/11/2026, 0/22 người từng dùng AI cho việc này).
+  - Công cụ AI chuyên biệt cho đặt đồ ăn nhóm có ràng buộc ăn uống ở Việt Nam: **chưa kiểm** (khảo sát không hỏi câu này).
 
 ## §1. Người dùng & bằng chứng *(guide 1.1, 1.2)*
 - Người dùng chính (một vai cụ thể): Học viên tại các khoá học tập trung (như L3B) hoặc nhân viên văn phòng thường xuyên nhận nhiệm vụ gom đơn và đặt cơm trưa hộ cho nhóm bạn cùng bàn / cùng phòng (3–8 người).
 - Việc họ cố làm xong (`động từ + đối tượng + bối cảnh`, không có chữ AI): Gom món ăn trưa và đặt một đơn chung cho nhóm 3–8 người có các ràng buộc ăn uống cá nhân (ăn chay, dị ứng, kiêng kỵ) trong ngân sách giới hạn và thời gian nghỉ trưa gấp.
 - Hôm nay họ giải bằng gì, hỏng ở đâu, vì sao chưa bỏ:
   - Hôm nay giải bằng: Nhắn tin hỏi từng người qua nhóm chat Zalo/Messenger (4/13), gửi menu vào nhóm chat (7/13), hoặc gửi link tính năng giỏ nhóm của app (7/13).
-  - Hỏng ở đâu: Tốn thời gian (trung vị ~11 phút/đơn, 5/13 người mất >10 phút); giỏ nhóm của app không kiểm tra thành phần dị ứng hay ăn chay (nhiều món ẩn thành phần như đậu phộng trong bún thịt nướng, nước mắm trong đồ chay); dễ quên tính phí ship làm tổng vượt ngân sách; khi giao tới dễ bị lấy nhầm suất ăn của nhau (7/13 người gặp sự cố trong tháng qua).
+  - Hỏng ở đâu: Tốn thời gian (trung vị ~11 phút/đơn, 5/13 người mất >10 phút); giỏ nhóm của app không kiểm tra thành phần dị ứng hay ăn chay (món ẩn thành phần — vd đậu phộng rắc trên bún thịt nướng — là tình huống nhóm dựng trong menu giả, chưa có bằng chứng từ app thật); dễ quên tính phí ship làm tổng vượt ngân sách; khi giao tới dễ bị lấy nhầm suất ăn của nhau (7/13 người gặp sự cố trong tháng qua).
   - Vì sao chưa bỏ: Bắt buộc phải đặt cơm trưa để cả nhóm kịp ăn và học/làm việc buổi chiều; hiện tại không có giải pháp nào khác ngoài việc người đặt phải tự rà thủ công.
 - Pain (KHÔNG chữ AI): Người đặt hộ nhóm — gom món và đặt cơm trưa cho 3–8 người — vướng khi phải kiểm tra thành phần từng món (dị ứng, chay) và nhẩm tổng tiền gồm ship — hậu quả là mất 10–20 phút, dễ vượt ngân sách hoặc chọn nhầm món khiến bạn bè không ăn được và không chịu thanh toán.
 - Bằng chứng — số chính + kết luận (chi tiết: `evidence/summary.md`): Khảo sát thật N=22 (bản xuất 18:05 27/11/2026): 13/22 người (59.1%) từng đặt hộ nhóm trong tháng qua; 7/13 người (53.8%) gặp ≥1 sự cố (thiếu/đổi món 6/13, vượt ngân sách do quên phí ship/dịch vụ 2/13, không rõ thành phần món 1/13); thời gian gom món trung vị ~11 phút/đơn.
@@ -42,12 +42,12 @@ Data BTC cấp đã dùng (nếu có — không commit nguyên file): không dù
 ## §3. Giải pháp tương tự *(guide 2.1)*
 - **ShopeeFood (Tính năng Đặt đơn nhóm / Group Order):**
   - *Một điều đáng học:* Cho phép tạo link chia sẻ tiện lợi vào nhóm chat, mỗi người tự chọn món từ menu của quán vào một giỏ chung, có hiển thị tên người tương ứng với từng món.
-  - *Một điều đáng né:* Hoàn toàn không có cơ chế cảnh báo dị ứng hay ăn chay (người dùng tự nhìn tên món, nhiều món ẩn thành phần như đậu phộng trong bún thịt nướng, nước mắm trong đồ chay); không có chốt chặn tổng ngân sách nhóm (tổng tiền cứ tự cộng dồn, người đặt phải tự tính và hay quên phí ship). Khi giao tới, hộp đồ ăn dán mã đơn chung dễ gây lấy nhầm suất của nhau.
-  - *Mình khác gì:* Người đặt chỉ cần gõ 1 câu yêu cầu tóm tắt (quán, số người, ngân sách, ai ăn chay/dị ứng). Hệ thống code và AI tự động lọc 100% món an toàn, chọn món tối ưu vừa ngân sách gồm ship, tạo giỏ nháp phân công rõ ràng từng món cho từng người.
+  - *Một điều đáng né:* Hoàn toàn không có cơ chế cảnh báo dị ứng hay ăn chay (người dùng tự nhìn tên món; ví dụ món ẩn thành phần là tình huống nhóm dựng, chưa kiểm trên app thật); không có chốt chặn tổng ngân sách nhóm (tổng tiền cứ tự cộng dồn, người đặt phải tự tính và hay quên phí ship). Khi giao tới, hộp đồ ăn dán mã đơn chung dễ gây lấy nhầm suất của nhau.
+  - *Mình khác gì:* Người đặt chỉ cần gõ 1 câu yêu cầu tóm tắt (quán, số người, ngân sách, ai ăn chay/dị ứng). Code lọc món theo tag thành phần của menu (lượt 1 vẫn lọt 2 câu do parser đọc sai — `eval/report.md`), chọn món tối ưu vừa ngân sách gồm ship, tạo giỏ nháp phân công rõ ràng từng món cho từng người.
 - **GrabFood (Tính năng Đơn nhóm / Group Order):**
-  - *Một điều đáng học:* Có tuỳ chọn cài đặt hạn mức chi tiêu tối đa trên mỗi người (spending limit per person) và tự động chia đều phí giao hàng.
+  - *Một điều đáng học:* *(chưa kiểm trên app — cần một thành viên mở GrabFood thử tính năng đơn nhóm rồi ghi lại)* Có thể có tuỳ chọn hạn mức chi tiêu mỗi người và chia phí giao hàng.
   - *Một điều đáng né:* Hạn mức cào bằng trên mỗi cá nhân không giải quyết được bài toán ngân sách tổng linh hoạt (người ăn ít bù cho người ăn nhiều); hoàn toàn không hỗ trợ lọc món theo dị ứng hay ăn chay.
-  - *Mình khác gì:* Tối ưu ngân sách tổng linh hoạt cho cả nhóm (không cào bằng), chốt chặn bằng code rule engine loại bỏ 100% rủi ro dị ứng/nhầm món chay, từ chối hoặc cảnh báo nếu ngân sách không đủ thay vì để đơn vượt tiền.
+  - *Mình khác gì:* Tối ưu ngân sách tổng linh hoạt cho cả nhóm (không cào bằng), chặn bằng code theo tag thành phần (chưa loại hết rủi ro: lượt 1 có 2 câu vi phạm do parser đọc sai), từ chối hoặc cảnh báo nếu ngân sách không đủ thay vì để đơn vượt tiền.
 
 ## §4. Thiết kế *(guide 2.2, 3.2)*
 - **Lát cắt MỘT CÂU** (1 người dùng · 1 việc · 1 quyết định AI · 1 kết quả): *Một người đặt hộ · đặt bữa trưa cho 5 người với 300k, 1 người ăn chay, 1 người dị ứng đậu phộng · AI chọn món cho từng người trong danh sách món an toàn mà code đã lọc, code kiểm giỏ (dị ứng, chay, tổng gồm phí ship), lỗi thì AI sửa hoặc nói thẳng không đủ và đề xuất nới · người đặt nhận giỏ nháp ghi món nào cho ai, giá, tổng tiền, rồi tự bấm đặt.*
@@ -121,7 +121,7 @@ flowchart TD
 ## §7. Đánh giá & chuẩn "đạt" *(guide 2.4, 4.1)*
 - Data card: `data/DATA_CARD.md` · bộ câu thử: `eval/benchmark.csv` — 22 câu (thuong 7 · kho 11 · tu_choi 4) · metric: `eval/metric_spec.yaml` (4 metric)
 - **Chuẩn "đạt"** (chốt **trước 19:30 Thứ Sáu 27/11**, giữ nguyên đến 23:59 Thứ Bảy 28/11): "Đạt khi ≥ 80% câu qua, và 0 câu vi phạm ăn chay / dị ứng (`an_toan_rang_buoc` 100%), 0 câu tổng tiền gồm phí ship vượt ngân sách (`tong_tien_dung_ngan_sach` 100%), 100% câu `tu_choi` qua."
-- Kết quả: lượt 1 17/22 (77.3%) · lượt 2 __/__ (__%) — run ID: `run-1@20261127-232123` / __ → chi tiết `eval/report.md`, hồ sơ `eval/README.md`
+- Kết quả: lượt 1 16/22 (72.7%) — chưa đạt chuẩn, 2 câu vi phạm dị ứng / chay (B19, B22) · lượt 2 __/__ (__%) — run ID: `run-1@20261127-232123` / __ → chi tiết `eval/report.md`, hồ sơ `eval/README.md`
 
 ## §8. Chi phí khi dùng thật *(guide 4.2)*
 - Persona + giá: `cost/personas.yaml` · lượt mô phỏng: `cost/simulate-__.csv` (__ phiên)
@@ -143,7 +143,10 @@ flowchart TD
 
 | Thời điểm | Đổi gì | Vì sao (trỏ về câu thử / lỗi / bằng chứng nào) |
 |---|---|---|
-|  |  |  |
+| 27/11 ~20:00 | Prompt chọn món ưu tiên món chính, món có ghi thành phần, giá gần mức chia đều | `eval --try`: B03 chọn Nem rán (không ghi thành phần) cho 2 người, chỉ tiêu 105k/200k |
+| 27/11 23:10 | Thêm 8 câu thử B15–B22 (`nguoi_dung`, viết lại từ câu 9 / câu 8 khảo sát); thêm provider `xkiro` + `BASE_URL` trong `ai.py` | CP3 cần 20–30 câu, ≥1/3 từ người dùng; lượt 1 chạy bằng `qwen/qwen3.5-flash:free` qua xkiro |
+| 27/11 23:30 | Chạy lượt 1 `run-1@20261127-232123` | — |
+| 27/11 23:50 | Chấm lại B15 (đạt → trượt: giỏ 7 người, đề 6); ghi B19, B22 vi phạm `an_toan_rang_buoc`; ghi B17, B20 có expected viết sai (không sửa expected); bỏ số "0/22 người dùng AI" và các khẳng định "100%" không có nguồn trong §0, §3 | Rà soát kết quả lượt 1 và nguồn số liệu trước CP3 |
 
 **Sau CP4 (đến 23:59 Thứ Bảy 28/11)** (sửa theo góp ý — không sửa chuẩn "đạt", câu thử, số bằng chứng, kết quả các lượt đã chạy)
 

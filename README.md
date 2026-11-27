@@ -85,7 +85,7 @@ Nhóm dùng stack khác (Node, Streamlit, notebook…): sửa hàm `run_app()` t
 
 | Thành phần | Thật / Giả | Ghi chú |
 |---|---|---|
-| Lời gọi AI ở quyết định trung tâm (chọn món cho từng người) | **Thật** | Model: `deepseek-flash` qua API DeepSeek (`codebase/ai.py`) |
+| Lời gọi AI ở quyết định trung tâm (chọn món cho từng người) | **Thật** | Lượt 1 (`run-1`): `qwen/qwen3.5-flash:free` qua endpoint xkiro định dạng OpenAI · đã thử nối `deepseek-flash` (API DeepSeek) · `codebase/ai.py` |
 | Đọc yêu cầu, lọc món an toàn, kiểm giỏ, cộng tiền | **Thật** — chạy bằng code | `codebase/tools.py`: `parse_request`, `safe_dishes`, `validate_cart` |
 | Menu quán, giá, thành phần, phí ship | **Giả** — `synthetic`, 2 quán · 21 món | `data/menu.json`, mô tả ở `data/DATA_CARD.md` |
 | Đặt đơn, thanh toán | **Không làm** — người đặt tự bấm đặt trên app | Chủ đích thiết kế, `spec.md` §4 |

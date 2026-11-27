@@ -37,15 +37,17 @@ Phỏng vấn nhiều vai thì đếm theo từng vai, không cộng chung.
 1. "Món bị sai, bạn tôi không chịu ăn và thanh toán món đấy" — phiếu khảo sát dòng 10 (`results.csv`)
 2. "mình bị người khác lấy nhầm suất ăn và phải nhận 1 suất đồ ăn khác" — phiếu khảo sát dòng 3 (`results.csv`)
 3. "Đơn vị không giao hàng" — phiếu khảo sát dòng 9 (`results.csv`) *(lỗi phía giao hàng, ngoài lát cắt)*
-4. "Trục trặc là ship là nyc" — phiếu khảo sát dòng 17 (`results.csv`) *(sự cố giao hàng ngoài phạm vi AI)*
-5. "Không biết món có thành phần gì nên phải hỏi quán hoặc đoán" — sự cố ghi nhận tại phiếu khảo sát dòng 21 (`results.csv`)
+4. "I always end up getting the same 2 places since it's so tough to stay in budget and still cover everyone's dietary needs..." — **nguồn công khai** (Reddit r/AdminAssistant, W02 trong `secondary-research.md`), không phải người nhóm hỏi
+5. "The toughest part is definitely coordinating everyone's preferences and knowing exactly who's in the office without a million messages back and forth." — **nguồn công khai** (W04 trong `secondary-research.md`), không phải người nhóm hỏi
+
+*Chờ phỏng vấn P1–P3 để thay mục 4–5 bằng lời người dùng của nhóm. Không dùng: phiếu dòng 17 (câu đùa); phiếu dòng 21 chỉ tick ô "không biết thành phần", không có lời kể nên không phải trích dẫn.*
 
 ## 4. Các nguồn có khớp nhau không
 
 Khảo sát người dùng thật (N = 22, 13 người đặt hộ) cho thấy: 53.8% gặp sự cố khi đặt hộ nhóm (chủ yếu là thiếu món/đổi món 6/13 và vượt dự tính do quên phí ship 2/13).
 Khớp và lệch so với giả định ban đầu:
 - **Khớp:** Nhu cầu gom đơn đặt hộ là có thật và phổ biến (59.1% người khảo sát từng đặt hộ nhóm ≥3 người trong tháng qua); thời gian gom đơn tốn trung bình ~11 phút/đơn; việc nhầm suất ăn hay vượt ngân sách thực sự xảy ra và gây phiền toái cho người đặt.
-- **Lệch:** Khảo sát cho thấy tỷ lệ nhầm món chay / dị ứng là 0/13. Nguyên nhân: người đặt hộ ý thức được mức độ nghiêm trọng của dị ứng/ăn chay nên rất cẩn thận, chấp nhận tốn thêm thời gian (gọi hỏi quán hoặc hỏi từng người trong chat) chứ không dám chọn bừa. Việc nhóm giữ chốt chặn an toàn (code rule engine) sẽ giải phóng thời gian tra cứu và rà soát thủ công này cho người đặt. Chờ bổ sung phỏng vấn P1–P3 để đào sâu thêm tâm lý và hành vi tại bàn ăn.
+- **Lệch:** Khảo sát cho thấy tỷ lệ nhầm món chay / dị ứng là 0/13. Nhóm **chưa biết** vì sao — một khả năng (chưa có dữ liệu): người đặt rất cẩn thận với dị ứng nên tốn thời gian hỏi lại thay vì chọn bừa; khả năng khác: chỉ 3/13 nhóm có người kiêng nên ít cơ hội nhầm. Phải hỏi trong phỏng vấn. Việc nhóm giữ chốt chặn an toàn (code rule engine) sẽ giải phóng thời gian tra cứu và rà soát thủ công này cho người đặt. Chờ bổ sung phỏng vấn P1–P3 để đào sâu thêm tâm lý và hành vi tại bàn ăn.
 
 ## 5. Kết luận
 
