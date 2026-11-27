@@ -46,3 +46,7 @@
 - Giả thuyết ở `evidence/hypothesis.md`: **ĐÚNG VÀ NGHIÊM TRỌNG HƠN DỰ KIẾN.**
 - Tỉ lệ gặp sự cố thực tế đạt **83.3%** (so với giả thuyết ≥33.3%).
 - Điều này củng cố tính cấp thiết của giải pháp Track D2: Dùng code để tự động lọc sạch các món nguy hiểm trước khi AI chọn món và kiểm tra cứng tổng tiền gồm phí ship bằng code.
+
+## 6. Nguồn khảo sát công khai bổ sung — phần Cấn Xuân Nghĩa
+
+Báo cáo [nghiên cứu nguồn công khai](secondary-research.md) ghi rõ hai khảo sát do **ezCater** công bố năm **2023** và **2024**, mẫu người thường đặt đồ ăn cho nơi làm việc, vị trí trang và URL báo cáo gốc. Các tỷ lệ trong báo cáo bổ sung là số liệu bên ngoài, không cộng vào N=24 của nhóm. Năm ví dụ công khai có trích dẫn và ngữ cảnh riêng; không phải người Aliba6 đã phỏng vấn. Đợt nghiên cứu nguồn công khai này chưa xác minh nguồn gốc của dữ liệu khảo sát/phỏng vấn nội bộ ở các mục trên.
