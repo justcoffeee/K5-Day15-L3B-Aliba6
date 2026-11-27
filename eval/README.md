@@ -9,10 +9,10 @@ Một dataset: menu giả 2 quán (`data/menu.json`, `synthetic`, nhóm tự vi�
 
 ## 2. Bộ câu thử dựng ra sao
 
-- `eval/benchmark.csv`: 14 câu (thuong 4 · kho 7 · tu_choi 3, trong đó 2 câu tấn công: B12, B13)
-- Nguồn (`python run.py check` in sẵn): nguoi_dung 0 · data_that 0 · tu_viet 14 · sinh_seed 0 → từ người dùng / data thật 0/14 (cần ≥1/3 — **chưa đạt**, CP3 thêm câu viết lại từ câu 9 khảo sát và phỏng vấn P1–P3)
-- Độ phủ — lưới input 4 chiều: quán (Cơm Mẫu / Bún Mẫu) · ràng buộc (không có / chay / dị ứng / chồng nhau / món không ghi thành phần) · ngân sách (dư / sát / thiếu / thiếu vì ship / không ghi) · hành vi mong đợi (đưa giỏ / hỏi lại / nói không khả thi / từ chối). Ô còn trống: người ghi ràng buộc mơ hồ ("ăn kiêng"), ngân sách theo đầu người.
-- Câu `kho` trỏ về 4 lớp chỗ khó (`spec.md` §5): lớp 1: B08, B11 · lớp 2: B05, B10 · lớp 3: B13, B14 (tu_choi) · lớp 4: B06, B07, B09, B12
+- `eval/benchmark.csv`: 22 câu (thuong 7 · kho 11 · tu_choi 4, trong đó 2 câu tấn công: B12, B13)
+- Nguồn (`python run.py check` in sẵn): nguoi_dung 8 · data_that 0 · tu_viet 14 · sinh_seed 0 → từ người dùng / data thật 8/22 (36.4% — **đạt** yêu cầu ≥1/3 của CP3, các câu B15–B22 viết lại từ câu chuyện và sự cố thật trong câu 9 khảo sát `results.csv`)
+- Độ phủ — lưới input 4 chiều: quán (Cơm Mẫu / Bún Mẫu) · ràng buộc (không có / chay / dị ứng / chồng nhau / món không ghi thành phần) · ngân sách (dư / sát / thiếu / thiếu vì ship / không ghi) · hành vi mong đợi (đưa giỏ / hỏi lại / nói không khả thi / từ chối).
+- Câu `kho` trỏ về 4 lớp chỗ khó (`spec.md` §5): lớp 1: B08, B11, B18 · lớp 2: B05, B10, B17 · lớp 3: B13, B14, B21 (tu_choi) · lớp 4: B06, B07, B09, B12, B19, B20
 
 ## 3. Metric và cách chấm
 
@@ -35,11 +35,11 @@ Một dataset: menu giả 2 quán (`data/menu.json`, `synthetic`, nhóm tự vi�
 
 | Lượt | Run ID | Model | Cấu hình (prompt / công cụ / thay đổi) | Đạt / tổng | % | Đạt chuẩn? |
 |---|---|---|---|---|---|---|
-| 1 | | | | __/__ | | |
+| 1 | `run-1@20261127-232123` | `qwen/qwen3.5-flash:free` (XKIRO) | Bộ câu 22 câu; prompt và tools nguyên bản v1 | 17/22 | 77.3% | Chưa đạt (chuẩn ≥80%, 100% tu_choi) |
 | 2 | | | | __/__ | | |
 
 Lượt chạy lại vì lỗi kỹ thuật, lượt sau CP4: ghi thêm dòng, không sửa dòng cũ.
 
 ## 6. Lỗi chính
 
-Tóm 2–3 dòng từ `eval/report.md`: nhóm lỗi lớn nhất · đã sửa gì · còn lại gì.
+Lượt 1 đạt 17/22 (77.3%). Hai nhóm lỗi chính: (1) Regex parser tiếng Việt chưa nhận diện được đại từ số lượng tự nhiên ("một bạn dị ứng", "có 2 bạn ăn chay") gây lọt dị ứng (B22) và nhận nhầm tên (B19); (2) Code fallback tự hạ món sang đồ ăn vặt/ăn kèm để ép vừa ngân sách thay vì từ chối khi không đủ tiền suất chính (B17, B20). Chi tiết ở `eval/report.md`.

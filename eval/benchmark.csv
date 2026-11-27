@@ -1,4 +1,4 @@
-﻿id,input,expected,pass_criterion,type,source
+id,input,expected,pass_criterion,type,source
 B01,"Đặt trưa ở Quán Cơm Mẫu cho 5 người, ngân sách 300k. An ăn chay, Bình dị ứng đậu phộng, Chi, Dũng, Hà ăn gì cũng được.","Giỏ nháp 5 món, mỗi người 1 món có tên; An món chay; Bình món không có đậu phộng; tổng gồm ship 20.000đ ≤ 300.000đ","Đủ 5 tên, mỗi tên 1 món có trong menu Quán Cơm Mẫu; 0 vi phạm chay/dị ứng theo data/menu.json; tổng in ra = tiền món + 20.000đ và ≤ 300.000đ; không nói đã đặt đơn",thuong,"tu_viet: lát cắt gợi ý track D2"
 B02,"Quán Cơm Mẫu, 4 người, 250k, không ai kiêng gì.","Giỏ nháp 4 món, tổng gồm ship ≤ 250.000đ","4 món có trong menu; tổng in ra = tiền món + 20.000đ và ≤ 250.000đ",thuong,"tu_viet: đơn không ràng buộc"
 B03,"Đặt Quán Bún Mẫu cho 3 người, 200k, Minh không ăn bò.","Giỏ nháp 3 món; Minh không có món có bò; tổng gồm ship 25.000đ ≤ 200.000đ","Đủ 3 người; món của Minh không chứa tag bo; tổng = tiền món + 25.000đ và ≤ 200.000đ",thuong,"tu_viet: kiêng một loại thịt"
