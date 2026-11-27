@@ -47,6 +47,17 @@ NOT_NAMES = {"Đặt", "Quán", "Cơm", "Bún", "Mẫu", "Kệ", "Bỏ", "Ngân"
              "Hôm", "Ai", "Giúp", "Ghi", "Nhanh", "Mọi", "Còn", "Người", "Không", "Phở", "Xôi",
              "Gỏi", "Canh", "Mì", "Bánh", "Nem", "Tất", "Cả", "Cứ", "Làm", "Thanh", "Nhớ"}
 
+# Chữ viết hoa ở ĐẦU CÂU chỉ được coi là tên khi từ ngay sau nó nói về việc ăn của một người
+# ("An ăn chay", "Hoa dị ứng …") hoặc ngay sau là dấu phẩy. Nhờ vậy "Đợt trước …", "Có 2 bạn …",
+# "App giao trễ …" không thành tên.
+NAME_NEXT = {"ăn", "dị", "kiêng", "không", "muốn", "thích", "thấy", "lấy", "gọi", "và", "với", "thì", "cần", "chỉ"}
+
+# Từ báo ràng buộc ăn uống — mọi chỗ xuất hiện phải gắn được vào một người, nếu không thì hỏi lại.
+CONSTRAINT_RE = r"ăn chay|dị ứng|không ăn|kiêng"
+
+# Từ đếm người không tên: "2 người ăn chay", "một bạn dị ứng tôm".
+COUNT_RE = r"(\d+|một|hai|ba|bốn|năm|sáu|bảy|tám)"
+
 NUM_WORDS = {"một": 1, "hai": 2, "ba": 3, "bốn": 4, "năm": 5, "sáu": 6, "bảy": 7, "tám": 8}
 
 
@@ -97,10 +108,12 @@ def _num(token):
 
 
 def _clause_constraints(clause):
-    """Từ một đoạn mô tả một người → (ăn chay?, tag phải tránh, nhãn hiển thị)."""
+    """Từ một đoạn mô tả một người → (ăn chay?, tag phải tránh, nhãn hiển thị, ràng buộc không hiểu).
+    "dị ứng / kiêng / không ăn X" mà X không khớp thành phần nào đã biết → trả ở phần "không hiểu" để hỏi lại,
+    không lặng lẽ bỏ qua."""
     low = clause.lower()
     veg = "ăn chay" in low
-    avoid, labels = set(), []
+    avoid, labels, unknown = set(), [], []
     if veg:
         labels.append("ăn chay")
     for kind in ("dị ứng", "không ăn", "kiêng"):
@@ -108,11 +121,17 @@ def _clause_constraints(clause):
             part = m.group(1)
             # dừng ở chỗ bắt đầu ý khác (vd "… nhưng An muốn …")
             part = re.split(r"\b(?:nhưng|muốn|thích|mà)\b", part)[0]
+            if re.match(r"\s*(gì|đi\b)", part):  # "không ai kiêng gì", "kệ dị ứng đi"
+                continue
+            found = False
             for pattern, tags, label in INGREDIENT_WORDS:
                 if re.search(r"(?<![a-zà-ỹ])(?:%s)(?![a-zà-ỹ])" % pattern, part):
                     avoid.update(tags)
                     labels.append("%s %s" % (kind, label))
-    return veg, avoid, labels
+                    found = True
+            if not found:
+                unknown.append("%s %s" % (kind, part.strip()))
+    return veg, avoid, labels, unknown
 
 
 def _find_dish(text, restaurant):
@@ -129,7 +148,8 @@ def _find_dish(text, restaurant):
 @tool
 def parse_request(text: str) -> dict:
     """Tên: parse_request · Input: yêu cầu người đặt hộ (str) · Output: {"restaurant_id", "budget",
-    "people": [{"name", "vegetarian", "avoid", "labels", "wants"}], "missing": [...], "flags": [...]}.
+    "total", "people": [{"name", "vegetarian", "avoid", "labels", "wants"}], "missing": [...], "flags": [...],
+    "unclear": [ràng buộc không gán được cho ai / không hiểu thành phần]}.
     Chạy bằng code (regex), không phải AI. Không hiểu chắc thì ghi vào "missing" để hỏi lại. Không tác động ra ngoài."""
     low = text.lower()
     flags = []
@@ -156,13 +176,20 @@ def parse_request(text: str) -> dict:
     if m:
         total = _num(m.group(1))
 
-    # Người có tên: chữ viết hoa không nằm trong danh sách loại trừ.
+    # Người có tên: chữ viết hoa không nằm trong danh sách loại trừ; ở đầu câu thì phải có NAME_NEXT ngay sau.
     words = [(m.start(), m.group(0)) for m in re.finditer(r"[^\W\d_]+", text)]
     names = []
-    for _, word in words:
-        if word[0].isupper() and word[1:].islower() and word not in NOT_NAMES and word not in names:
-            names.append(word)
+    for i, (pos, word) in enumerate(words):
+        if not (word[0].isupper() and word[1:].islower()) or word in NOT_NAMES or word in names:
+            continue
+        sentence_start = re.fullmatch(r"\s*", text[:pos]) or re.search(r"[.!?]\s*$", text[:pos])
+        nxt = words[i + 1][1].lower() if i + 1 < len(words) else ""
+        if sentence_start and nxt not in NAME_NEXT and not text[pos + len(word):].startswith(","):
+            continue
+        names.append(word)
     positions = [(pos, w) for pos, w in words if w in names]
+    covered = []  # các đoạn văn đã gán được cho một người — để soát ràng buộc bị bỏ sót
+    unknown = []
 
     people = {n: {"name": n, "vegetarian": False, "avoid": set(), "labels": [], "wants": None} for n in names}
     for i, (pos, name) in enumerate(positions):
@@ -170,7 +197,9 @@ def parse_request(text: str) -> dict:
         clause = text[pos + len(name):end]
         stop = re.search(r"[.;]", clause)
         clause = clause[:stop.start()] if stop else clause
-        veg, avoid, labels = _clause_constraints(clause)
+        covered.append((pos, pos + len(name) + len(clause)))
+        veg, avoid, labels, unk = _clause_constraints(clause)
+        unknown += unk
         p = people[name]
         p["vegetarian"] = p["vegetarian"] or veg
         p["avoid"] |= avoid
@@ -180,12 +209,29 @@ def parse_request(text: str) -> dict:
             p["wants"] = dish["id"]
     ordered = [people[n] for n in names]
 
-    # Người không tên: "2 người ăn chay", "1 người dị ứng hải sản".
+    # Người không tên: "2 người ăn chay", "1 bạn dị ứng hải sản", "một bạn kiêng thịt bò".
     unnamed = []
-    for m in re.finditer(r"(\d+|một|hai|ba|bốn|năm)\s+người\s+((?:ăn chay|dị ứng|không ăn|kiêng)[^,.;]*)", low):
-        veg, avoid, labels = _clause_constraints(m.group(2))
+    for m in re.finditer(COUNT_RE + r"\s+(?:người|bạn)\s+((?:%s)[^,.;]*)" % CONSTRAINT_RE, low):
+        covered.append((m.start(), m.end()))
+        veg, avoid, labels, unk = _clause_constraints(m.group(2))
+        unknown += unk
         for _ in range(_num(m.group(1)) or 0):
             unnamed.append({"vegetarian": veg, "avoid": set(avoid), "labels": list(labels), "wants": None})
+    # Người không tên muốn một món: "1 bạn ăn bún chả", "2 bát bún chả".
+    for m in re.finditer(COUNT_RE + r"\s+(?:(?:người|bạn)\s+(?:ăn|muốn|lấy|gọi)|bát|tô|suất|phần|đĩa)\s+([^,.;]+)", low):
+        dish = _find_dish(m.group(2), restaurant)
+        if dish:
+            for _ in range(_num(m.group(1)) or 0):
+                unnamed.append({"vegetarian": False, "avoid": set(), "labels": [], "wants": dish["id"]})
+
+    # Soát: mọi chỗ ghi ràng buộc phải nằm trong đoạn đã gán cho một người và hiểu được thành phần.
+    unclear = list(unknown)
+    for m in re.finditer(CONSTRAINT_RE, low):
+        if any(a <= m.start() < b for a, b in covered):
+            continue
+        if re.search(r"(kệ|bỏ qua)\s*$", low[:m.start()]) or re.match(r"(?:%s)\s+(gì|đi\b)" % CONSTRAINT_RE, low[m.start():]):
+            continue  # "kệ dị ứng đi", "không ai kiêng gì" — không phải ràng buộc của một người
+        unclear.append(re.split(r"[,.;]", text[m.start():m.start() + 40])[0].strip())
 
     missing = []
     if total is None:
@@ -199,6 +245,8 @@ def parse_request(text: str) -> dict:
             ordered.append(base)
         if len(ordered) > total:
             missing.append("so_nguoi_khong_khop")
+    if unclear:
+        missing.append("rang_buoc_chua_ro")
     if restaurant is None:
         missing.append("quan")
     if budget is None:
@@ -208,8 +256,8 @@ def parse_request(text: str) -> dict:
 
     for p in ordered:
         p["avoid"] = sorted(p["avoid"])
-    return {"restaurant_id": restaurant["id"] if restaurant else None, "budget": budget,
-            "people": ordered, "missing": missing, "flags": flags}
+    return {"restaurant_id": restaurant["id"] if restaurant else None, "budget": budget, "total": total,
+            "people": ordered, "missing": missing, "flags": flags, "unclear": unclear}
 
 
 # ---------- kiểm an toàn và tiền (code, không phải AI) ----------

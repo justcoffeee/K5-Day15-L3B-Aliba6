@@ -54,7 +54,16 @@ def _early_stop(req):
         note("dừng: hỏi y tế, ngoài phạm vi")
         return ("Mình chỉ giúp chọn món an toàn theo menu, không tư vấn thuốc hay điều trị dị ứng. "
                 "Bạn hỏi bác sĩ hoặc dược sĩ nhé. Nếu đang khó thở, sưng môi họng: gọi 115 ngay.")
-    missing = [m for m in req["missing"] if m != "so_nguoi_khong_khop"]
+    if "so_nguoi_khong_khop" in req["missing"]:
+        note("dừng: số tên khác số người → hỏi lại")
+        return ("Bạn ghi %s người nhưng mình đọc ra nhiều tên hơn: %s. Mình không đoán — bạn xác nhận lại "
+                "nhóm có mấy người và tên từng người nhé." % (req["total"], ", ".join(p["name"] for p in req["people"])))
+    if "rang_buoc_chua_ro" in req["missing"]:
+        note("dừng: ràng buộc chưa rõ: %s" % req["unclear"])
+        return ("Mình chưa chắc ràng buộc này là của ai hoặc là thành phần gì: %s. Mình không lập giỏ khi chưa rõ, "
+                "để tránh chọn nhầm cho người ăn chay / dị ứng. Bạn ghi lại theo dạng \"Tên + ăn chay / dị ứng + "
+                "thành phần\" (vd: \"Lan dị ứng tôm\") hoặc \"1 người ăn chay\" nhé." % "; ".join(req["unclear"]))
+    missing = [m for m in req["missing"] if m not in ("so_nguoi_khong_khop", "rang_buoc_chua_ro")]
     if missing:
         names = ", ".join(r["name"] for r in list_restaurants())
         ask = {"quan": "đặt ở quán nào (đang có: %s)" % names,
@@ -170,7 +179,8 @@ def _format(req, menu, cart, check, extra):
     lines.append("Tiền món %s + phí ship %s = TỔNG %s / ngân sách %s (còn %s)." % (
         vnd(check["food_total"]), vnd(check["ship_fee"]), vnd(check["total"]), vnd(req["budget"]),
         vnd(req["budget"] - check["total"])))
-    lines.append("Đã kiểm bằng code: 0 món vi phạm ăn chay / dị ứng; món không ghi thành phần không chọn cho người có ràng buộc.")
+    lines.append("Đã kiểm bằng code theo đúng ràng buộc ghi cạnh từng người ở trên: không món nào vi phạm; "
+                 "món không ghi thành phần không chọn cho người có ràng buộc. Nếu thiếu ràng buộc của ai, sửa yêu cầu rồi gửi lại.")
     lines += extra
     lines.append("Thành phần lấy theo menu quán ghi. Người dị ứng nặng nên hỏi lại quán trước khi ăn.")
     return "\n".join(lines)
@@ -187,8 +197,6 @@ def answer(text: str) -> dict:
         extra.append("Mình vẫn giữ lọc dị ứng / ăn chay — phần này không tắt được, kể cả khi bạn bảo bỏ qua.")
     if "doi_dat_don" in req["flags"] or "chen_lenh" in req["flags"]:
         extra.append("Mình không tự đặt đơn hay thanh toán, và không sửa giá / tổng tiền. Đây chỉ là giỏ nháp, tổng tính đúng theo menu.")
-    if "so_nguoi_khong_khop" in req["missing"]:
-        extra.append("Số tên bạn ghi nhiều hơn số người — mình lập giỏ theo đủ các tên đã ghi.")
 
     menu = get_menu(req["restaurant_id"])
     options = {p["name"]: safe_dishes(menu["id"], p) for p in req["people"]}
@@ -197,6 +205,15 @@ def answer(text: str) -> dict:
             wanted = next(d for d in menu["dishes"] if d["id"] == p["wants"])
             extra.append("%s muốn %s nhưng món này không hợp với %s, nên mình chọn món khác — %s xác nhận lại giúp nhé."
                          % (p["name"], wanted["name"], ", ".join(p["labels"]) or "ràng buộc đã ghi", p["name"]))
+    wanted = [p["wants"] for p in req["people"] if p["wants"]]
+    if wanted and len(wanted) == len(req["people"]):
+        price = {d["id"]: d["price"] for d in menu["dishes"]}
+        want_total = menu["ship_fee"] + sum(price[w] for w in wanted)
+        if want_total > req["budget"]:
+            extra.append("Các món bạn muốn: %s tiền món + %s phí ship = %s, vượt ngân sách %s — nên mình đổi món cho vừa. "
+                         "Muốn giữ đúng món thì cần ngân sách ít nhất %s." % (
+                             vnd(want_total - menu["ship_fee"]), vnd(menu["ship_fee"]), vnd(want_total),
+                             vnd(req["budget"]), vnd(want_total)))
     stop = _infeasible(req, menu, options)
     if stop:
         return {"output": stop}
