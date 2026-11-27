@@ -21,8 +21,13 @@ from tracing import note
 
 SYSTEM = """Bạn giúp một người đặt đồ ăn hộ cả nhóm chọn món.
 Mỗi người đã có sẵn danh sách món AN TOÀN (code đã lọc dị ứng, ăn chay). Chỉ được chọn trong danh sách đó.
-Chọn đúng 1 món cho mỗi người. Ưu tiên món người đó muốn nếu có trong danh sách, chia đều tiền giữa mọi người,
-tổng tiền món + phí ship không vượt ngân sách. Không bịa món, không đổi giá.
+Chọn đúng 1 món cho mỗi người, theo thứ tự ưu tiên:
+1. Món người đó muốn ("muon"), nếu có trong danh sách của họ.
+2. Món chính đủ no cho một bữa (cơm, bún, phở, mì, xôi); tránh món ăn kèm như nem, canh nếu còn món chính.
+3. Món có ghi thành phần ("co_thanh_phan": true); món không ghi thành phần chỉ chọn khi không còn món khác.
+4. Mỗi người khoảng (ngân sách - phí ship) / số người; không cần chọn món rẻ nhất, không cần tiêu hết tiền.
+5. Đổi món giữa các người không ràng buộc cho đa dạng.
+Tổng tiền món + phí ship không được vượt ngân sách. Không bịa món, không đổi giá.
 Chỉ trả về JSON, không viết gì khác:
 {"cart": [{"person": "<tên đúng như input>", "dish_id": "<mã món>", "ly_do": "<tối đa 12 chữ>"}]}"""
 
@@ -110,7 +115,8 @@ def _ask_model(req, menu, options, feedback=""):
     payload = {
         "quan": menu["name"], "phi_ship": menu["ship_fee"], "ngan_sach": req["budget"],
         "nguoi": [{"ten": p["name"], "rang_buoc": p["labels"], "muon": p["wants"],
-                   "mon_an_toan": [{"id": d["id"], "ten": d["name"], "gia": d["price"]} for d in options[p["name"]]]}
+                   "mon_an_toan": [{"id": d["id"], "ten": d["name"], "gia": d["price"],
+                                    "co_thanh_phan": d["ingredients"] is not None} for d in options[p["name"]]]}
                   for p in req["people"]],
     }
     user = json.dumps(payload, ensure_ascii=False)
