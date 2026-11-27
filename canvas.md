@@ -1,16 +1,15 @@
-# Canvas — [tên nhóm] · Track [A–F]
+# Canvas — Aliba6 · Track D
 
 > Điền ở guide bước 1.4. CP1 17:00 Thứ Sáu 27/11: nộp bản đầu, đủ 7 dòng (dòng 4 được ghi giả thuyết + nguồn sẽ kiểm).
 > CP2 19:30 Thứ Sáu 27/11: cập nhật (số bằng chứng đầu, lát cắt đã chốt) và điền dòng "Đã đổi gì so với CP1".
-> Track F: chép thêm thẻ đề của nhóm (khung trong file track F) xuống dưới bảng này.
 
 | # | Dòng | Nhóm điền |
 |---|---|---|
-| 1 | Track + lát cắt dự kiến | |
-| 2 | Người dùng chính (một vai cụ thể — không phải "học viên nói chung") | |
-| 3 | Pain một câu: ai — đang làm gì — vướng đâu — hậu quả | |
-| 4 | Bằng chứng đầu — CP1: giả thuyết + nguồn sẽ kiểm · CP2: số đầu tiên + 1 trích dẫn | |
-| 5 | **Lát cắt MỘT CÂU** (1 người dùng · 1 việc · 1 quyết định AI · 1 kết quả) | |
-| 6 | AI tự làm đến đâu + 1 dòng lý do: sai thì ai chịu gì | |
-| 7 | Phân công có tên | |
+| 1 | Track + lát cắt dự kiến | **Track D · Thương mại điện tử — hướng D2: đặt đơn đồ ăn nhóm có ràng buộc ăn uống.** Lát cắt dự kiến: người đặt hộ nhập số người, ngân sách, ai ăn chay / dị ứng gì → nhận giỏ món từ menu một quán, đã kiểm bằng code. |
+| 2 | Người dùng chính (một vai cụ thể — không phải "học viên nói chung") | Người **đặt cơm trưa / đồ ăn hộ cả nhóm** (4–6 người) qua app giao đồ ăn, trong nhóm có ≥1 người ăn chay hoặc dị ứng, chung một ngân sách — ví dụ học viên đặt hộ nhóm lab, nhân viên văn phòng đặt hộ team. |
+| 3 | Pain một câu: ai — đang làm gì — vướng đâu — hậu quả | Người đặt hộ nhóm **đang gom món cho từng người trên app giao đồ ăn**, phải tự đọc mô tả món xem có thịt / đậu phộng không và tự cộng tiền kèm phí ship → **mất thời gian, dễ chọn nhầm món cho người ăn chay / dị ứng hoặc vượt ngân sách**, người bị nhầm phải nhịn hoặc gặp rủi ro sức khoẻ, người đặt mất tiền và mất lòng tin của nhóm. |
+| 4 | Bằng chứng đầu — CP1: giả thuyết + nguồn sẽ kiểm · CP2: số đầu tiên + 1 trích dẫn | **CP1 — giả thuyết** (`evidence/hypothesis.md`): người đặt hộ nhóm thường mất >10 phút / đơn và ≥1/3 từng gặp sự cố (nhầm món cho người có ràng buộc, quên phí ship nên vượt tiền). **Nguồn sẽ kiểm:** (1) **khảo sát ≥20 bạn cùng lớp** ngoài nhóm về lần gần nhất đặt hộ nhóm — nguồn chính; (2) **phỏng vấn ≥3 người** hay đặt hộ (hỏi chuyện 1 tháng qua) — để hiểu vì sao; (3) **review công khai** app giao đồ ăn trên Google Play, gắn nhãn đếm x/N — để kiểm lại. |
+| 5 | **Lát cắt MỘT CÂU** (1 người dùng · 1 việc · 1 quyết định AI · 1 kết quả) | *Một người đặt hộ · đặt bữa trưa cho 5 người với 300k, 1 người ăn chay, 1 người dị ứng đậu phộng · AI chọn món cho từng người từ menu một quán, code kiểm giỏ (dị ứng, chay, tổng gồm phí ship), lỗi thì AI thay món hoặc nói thẳng không đủ và đề xuất nới · người đặt nhận giỏ kèm món nào cho ai, giá, tổng tiền, rồi tự bấm đặt.* |
+| 6 | AI tự làm đến đâu + 1 dòng lý do: sai thì ai chịu gì | **AI gợi ý giỏ, người đặt duyệt và tự bấm đặt.** AI không tự đặt đơn, không tự thanh toán. Kiểm dị ứng / chay / ngân sách **chạy bằng code**, không để model tự cộng tiền hay tự lọc. Món không rõ thành phần coi là chưa an toàn. **Lý do:** sai dị ứng thì người ăn chịu hại sức khoẻ, không đảo lại được; sai tiền thì người đặt chịu — nên AI chỉ đề xuất, chặn cứng bằng code. |
+| 7 | Phân công có tên | *(thay TV1–TV4 bằng họ tên khớp `TEAMS.md`)* **Cả nhóm:** mỗi người hỏi ≥1 người dùng + chia nhau gửi khảo sát. **Cặp X — TV1 + TV2:** khung bản chạy thử (`get_menu`, `validate_cart`, luồng chính), nối model, chỗ chặn rủi ro. **Cặp Y — TV3 + TV4:** khảo sát + phỏng vấn, đào review, data card + menu giả có seed, bộ câu thử + metric spec. Đổi cặp sau CP2. |
 | — | *(CP2)* Đã đổi gì so với CP1 | |
