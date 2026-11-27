@@ -1,23 +1,18 @@
 # Data card — dữ liệu bản chạy thử dùng
 
-> Điền ở guide bước 2.4 (bản đầu ở CP2, đủ ở CP3). Ôn lại: ngày 6 · lab ngày 6. Chấm ở rubric R4.
-> Một trang. Mỗi dataset một mục. Dữ liệu chạy thử (bài mẫu, thông báo mẫu, đoạn transcript…) để trong thư mục `data/` này.
-> Không commit nguyên tài liệu khoá, dữ liệu cá nhân thật hay nguyên file data BTC cấp — chỉ đoạn trích ngắn, bản viết lại, hoặc số đã tổng hợp.
+> Điền ở guide bước 2.4 (bản đầu ở CP2, đủ ở CP3). Ôn lại: ngày 6 · lab ngày 6.
+> Một trang. Mỗi dataset một mục.
 
-## Dataset 1 · [tên]
+## Dataset 1 · Menu synthetic đặt cơm hộ nhóm
 
 | | |
 |---|---|
-| Dùng để làm gì | nguồn cho công cụ `…` · bộ câu thử · đào bằng chứng |
-| Từ đâu | data BTC cấp (`…` trong repo đề) · tài liệu khoá (trích / viết lại) · nhóm tự viết · sinh có seed |
-| Xử lý những bước gì | lọc __ · làm sạch __ · ẩn danh __ · chia __ (script: `…`) |
-| Số dòng / số đoạn | __ |
-| Phiên bản / ngày lấy | __ |
-| Nhãn | thật · `synthetic` |
-| Giới hạn | thiếu gì, lệch về phía nào |
+| Dùng để làm gì | nguồn menu cho công cụ tra cứu · bộ câu thử evaluation · mô phỏng hành vi chọn món |
+| Từ đâu | Nhóm tự sinh, dựa trên giả thuyết đặt cơm hộ trong `evidence/hypothesis.md` |
+| Xử lý những bước gì | Dựng 7 món có mã, giá, thành phần, nhãn chay; lưu JSON; seed cố định 20261127 |
+| Số dòng / số đoạn | 7 món |
+| Phiên bản / ngày lấy | phiên bản 1 · 27/11/2026 |
+| Nhãn | `synthetic` |
+| Giới hạn | Không phải menu quán thật, không chứng minh pain, không có dữ liệu dị ứng hoặc giá real-time |
 
-**Data `synthetic` (nhóm tự sinh):** ghi cách sinh (prompt / script), seed, người kiểm, số dòng đã kiểm tay. Data tự dựng **không phải bằng chứng pain**.
-
-## Dataset 2 · [tên]
-
-…
+**Data `synthetic` (nhóm tự sinh):** file `data/menu-synthetic.json`, seed `20261127`, tạo và kiểm tay bởi Nguyễn Mạnh Hùng. Cách sinh: lập danh sách món mẫu có mã M01-M07, giá nội bộ VND, thành phần rõ ràng và nhãn chay. Hai món M02/M04 là chay; M06 có đậu phộng; M07 có mè. Đã kiểm tay 7/7 món có mã, giá, thành phần và nhãn nhất quán.

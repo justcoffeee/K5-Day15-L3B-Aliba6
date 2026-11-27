@@ -1,0 +1,17 @@
+{
+  "name": "Menu giả dành cho benchmark",
+  "synthetic": true,
+  "seed": 20261127,
+  "created_by": "Nguyễn Mạnh Hùng",
+  "usage": "Chỉ dùng để thử bộ câu; không phải data bằng chứng pain và không được coi là menu quán thật.",
+  "currency": "VND",
+  "items": [
+    {"code": "M01", "name": "Cơm gà teriyaki", "price": 42000, "ingredients": ["gà", "gạo", "nước tương"], "dietary": ["không chay"]},
+    {"code": "M02", "name": "Cơm đậu hũ nấm", "price": 38000, "ingredients": ["đậu hũ", "nấm", "gạo"], "dietary": ["chay", "không thịt", "không cá"]},
+    {"code": "M03", "name": "Bún cá", "price": 48000, "ingredients": ["cá", "bún", "rau"], "dietary": ["không chay", "có cá"]},
+    {"code": "M04", "name": "Lẩu nấm chay", "price": 55000, "ingredients": ["nấm", "đậu hũ", "rau"], "dietary": ["chay", "không thịt", "không cá"]},
+    {"code": "M05", "name": "Mì xào bò", "price": 52000, "ingredients": ["bò", "mì", "rau"], "dietary": ["không chay"]},
+    {"code": "M06", "name": "Salad gà", "price": 35000, "ingredients": ["gà", "rau", "đậu phộng"], "dietary": ["không chay", "có đậu phộng"]},
+    {"code": "M07", "name": "Cơm gà sốt mè", "price": 45000, "ingredients": ["gà", "gạo", "mè"], "dietary": ["không chay", "có mè"]}
+  ]
+}
