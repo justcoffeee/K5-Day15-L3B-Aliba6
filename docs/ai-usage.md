@@ -16,3 +16,9 @@ README của nhóm có mục "Dùng AI vào việc gì" (2–3 dòng, bắt bu�
 | Slide, văn bản | | | | |
 
 **Không dùng AI để:** tạo người được phỏng vấn, trích dẫn, câu trả lời khảo sát; sửa kết quả các lượt đã chạy (`eval/run-*.csv`, `cost/simulate-*.csv`, `traces/`).
+
+## Bổ sung 27/11/2026 — nghiên cứu nguồn công khai
+
+- Cấn Xuân Nghĩa phụ trách; Codex hỗ trợ tìm kiếm, đọc và tổng hợp nguồn công khai tại `evidence/secondary-research.md`.
+- Báo cáo ghi đơn vị thực hiện/công bố, thời gian khảo sát, cỡ mẫu, trang và link gốc; giữ trích dẫn công khai cùng ngữ cảnh và giới hạn.
+- Không tạo phản hồi khảo sát, người phỏng vấn hoặc số liệu nội bộ. Chưa xác minh bộ dữ liệu khảo sát/phỏng vấn mà thành viên khác đã cập nhật. Nghĩa cần kiểm nguồn và giải thích được các mẫu số trước khi dùng báo cáo.
