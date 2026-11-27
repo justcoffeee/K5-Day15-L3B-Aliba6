@@ -8,7 +8,7 @@
 
 - Kênh đã gửi: nhóm Zalo (Huy gửi link lúc 17:00 27/11/2026)
 - Giờ mở: 17:00 27/11/2026 · **đếm lần 1 (CP2):** bản xuất lúc 18:05, 22 phiếu (phiếu đầu 17:25, phiếu cuối 18:03) — file gốc `raw-20261127-1805.csv` (không commit) · giờ chốt cuối cho CP3: __
-- Người trong nhóm Aliba6 **không trả lời** form này.
+- Người trong nhóm Aliba6 **không trả lời** form này. *(Đã hỏi lại cả 4 thành viên lúc 18:15 27/11: không ai điền → không loại phiếu nào; không có phiếu trùng rõ ràng → N = 22.)*
 
 **Tin nhắn gửi kèm (không giới thiệu sản phẩm, tránh dẫn dắt):**
 > Chào mọi người, nhóm mình đang tìm hiểu cách mọi người đặt đồ ăn chung cho cả nhóm. Form 2 phút, 10 câu, không hỏi tên hay email. Cảm ơn nhiều! [link]

@@ -15,7 +15,7 @@
 
 - Đào data: __/__ (__%) …
 - Phỏng vấn: __/3 người gặp *(n nhỏ không ghi %)* · số lần / tháng: P1 __, P2 __, P3 __ · mỗi lần mất __–__ phút
-- Khảo sát (đếm lần 1, bản xuất 18:05 27/11/2026, chạy lại: `python evidence/survey/count.py`): **N = 22**
+- Khảo sát (đếm lần 1, bản xuất 18:05 27/11/2026, chạy lại: `python evidence/survey/count.py`): **N = 22** — không phiếu nào của thành viên Aliba6 (đã hỏi lại cả nhóm), không phiếu trùng
   - Từng đặt hộ nhóm ≥3 người trong 1 tháng qua: **13/22 (59.1%)** — giả thuyết ≥50%: đạt.
   - Trong 13 người đó, gặp ≥1 sự cố (nhầm món cho người ăn chay / dị ứng · vượt dự tính · thiếu / phải đổi món): **7/13 (53.8%)** — giả thuyết ≥1/3: đạt.
   - Tách theo loại sự cố (trên 13): thiếu món / phải đổi món **6/13** · vượt dự tính (phí ship, phí dịch vụ) **2/13** · không biết thành phần món **1/13** · phải chọn lại quán **1/13** · **chọn nhầm món cho người ăn chay / dị ứng / kiêng: 0/13** · không gặp chuyện nào 6/13.
