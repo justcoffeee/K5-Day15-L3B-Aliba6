@@ -14,7 +14,17 @@
 | Nhãn | `synthetic` |
 | Giới hạn | Menu thật dài hơn, có topping, size, phí dịch vụ, khuyến mãi — chưa có. Tag thành phần giả định là đúng; ngoài đời quán có thể ghi thiếu (vì vậy output luôn nhắc người dị ứng nặng hỏi lại quán). Chỉ 2 quán nên đề xuất "đổi quán" rất hẹp |
 
-**Cách sinh:** soạn tay cùng coding agent (Claude Code), không dùng seed. Người phụ trách: Nguyễn Mạnh Hùng *(cặp Y)* · người kiểm lại tag từng món: __ — đã kiểm __/21 món *(điền sau khi kiểm)*.
+**Cách sinh:** soạn tay cùng coding agent (Claude Code), không dùng seed. Người phụ trách: Nguyễn Mạnh Hùng *(cặp Y)* · người kiểm lại tag từng món: Lê Thanh Tùng *(cặp X)* — đã kiểm 21/21 món *(đạt chuẩn 100% đối chiếu với NON_VEG và INGREDIENT_WORDS)*.
+
+### Kết quả kiểm định 21 món của Lê Thanh Tùng:
+- **Quán Cơm Mẫu (`com_mau` - 14 món):**
+  - **Món chay (4 món an toàn):** `C05` Cơm đậu hũ sốt cà (35k), `C06` Cơm rau xào nấm (35k), `C08` Xôi lạc (25k), `C10` Mì xào chay (40k).
+  - **Món mặn (9 món):** `C01` Cơm gà xối mỡ, `C02` Cơm sườn nướng, `C03` Cơm bò lúc lắc, `C04` Cơm chiên dương châu (có trứng, tôm), `C07` Gỏi gà trộn lạc (có đậu phộng), `C09` Cơm cá kho, `C12` Canh chua tôm, `C13` Cơm trứng ốp la, `C14` Bánh mì chả.
+  - **Món không rõ thành phần (`null` - 1 món):** `C11` Cơm đặc biệt của quán (55k) — đúng thiết kế để loại bỏ khi người dùng có ràng buộc ăn kiêng.
+- **Quán Bún Mẫu (`bun_mau` - 7 món):**
+  - **Món chay (1 món an toàn):** `B04` Bún chay (40k - bún, đậu hũ, nấm, rau).
+  - **Món mặn (5 món):** `B01` Bún chả, `B02` Bún thịt nướng (chứa `dau_phong` dù tên không lộ), `B03` Bún bò Huế (có `mam_tom`), `B05` Phở gà, `B06` Bún riêu cua (`cua`, `mam_tom`).
+  - **Món không rõ thành phần (`null` - 1 món):** `B07` Nem rán (20k - `ingredients: null`).
 
 **Quy ước "ăn chay"** (chốt chặt để không chọn nhầm): không thịt, cá, hải sản, nước mắm, mắm tôm, trứng. Người "ăn chay có trứng" hiện bị coi như ăn chay chặt — an toàn hơn, chỉ ít lựa chọn hơn.
 
