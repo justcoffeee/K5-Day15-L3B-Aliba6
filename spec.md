@@ -21,13 +21,13 @@ Data BTC cấp đã dùng (nếu có — không commit nguyên file): không dù
 
 | Hướng | Bao nhiêu người gặp | Bao nhiêu lần / tháng | Mỗi lần tốn gì | Impact / tháng | Làm kịp không | Chọn? |
 |---|---|---|---|---|---|---|
-|  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |
-|  |  |  |  |  |  |  |
+| **D2 · Đặt đồ ăn hộ nhóm có ràng buộc ăn uống** | 13/22 người khảo sát từng đặt hộ nhóm trong tháng qua; 7/13 gặp ≥1 sự cố (khảo sát) | trung vị 2 lần / người (câu 3, 13 người: 1 → 20 lần) | ~11 phút / đơn *(tự ước tính từ điểm giữa nhóm câu 7: 8 người 5–10 phút, 4 người 10–20, 1 người >20)*; sự cố: thiếu / đổi món 6/13, vượt dự tính 2/13, nhầm món cho người kiêng 0/13 | ~22 phút / người đặt hộ / tháng; 5.000 người *(tự ước tính, §8)* → ~1.870 giờ / tháng đang tốn | Kịp: menu giả + code kiểm giỏ + 1 lời gọi AI, đã chạy với DeepSeek | **Chọn** |
+| D1 · Xử lý khiếu nại đơn giao đồ ăn (thiếu món, sai món, giao trễ) | Có tín hiệu trong khảo sát D2: 6/13 gặp "thiếu món / phải đổi món", 1 phiếu kể "món bị sai", 1 phiếu "đơn vị không giao hàng" — nhưng câu hỏi không hỏi về khiếu nại | chưa đo | chưa đo | chưa tính được | Khó: cần đơn thật, chính sách hạn mức thật, phía quán / sàn | Loại |
+| D3 · Trả hàng, hoàn tiền trên sàn | chưa thu bằng chứng | chưa đo | chưa đo | chưa tính được | Khó: phải trung lập giữa người mua và người bán, cần mô tả lúc đặt | Loại |
 
-- **Impact / tháng** của hướng chọn = __ người × __ lần × __ phút = __ — nguồn từng thừa số: __ (không có nguồn thì ghi rõ *(tự ước tính)*)
-- Hướng ĐÃ LOẠI + vì sao (giữ lại, đừng xoá):
-- Số lần / tháng của từng kiểu người dùng (dùng cho persona ở §8):
+- **Impact / tháng** của hướng chọn = 5.000 người *(tự ước tính, chưa có nguồn công khai)* × 2 lần *(khảo sát câu 3, trung vị)* × ~11,2 phút *(tự ước tính từ khoảng thời gian câu 7)* ≈ 112.000 phút ≈ **1.870 giờ / tháng** đang dùng để gom món, chưa kể sự cố (7/13 người gặp ≥1 lần / tháng). Đây là thời gian đang tốn, không phải thời gian chắc chắn tiết kiệm được.
+- Hướng ĐÃ LOẠI + vì sao (giữ lại, đừng xoá): D1 — chuyện thiếu / sai món trong khảo sát phần lớn do quán hoặc người giao làm sai, ngoài tầm tay người đặt; muốn làm phải có đơn và chính sách thật. D3 — nhóm không thu bằng chứng nào, và không phải người dùng thường xuyên của việc này. **Lưu ý trung thực:** khảo sát cho thấy nhầm món cho người ăn chay / dị ứng là 0/13; nhóm vẫn giữ D2 vì sai dị ứng hại nặng, không đảo được, và giỏ nháp cũng xử lý được "món nào cho ai" + "tổng gồm ship" — hai lỗi hay gặp hơn (canvas, dòng "Đã đổi gì").
+- Số lần / tháng của từng kiểu người dùng (dùng cho persona ở §8): đặt hộ ít 8/13 người, 1–3 lần (trung vị 2) · vừa 3/13, 4–5 lần · nhiều 2/13, 7 và 20 lần → `cost/personas.yaml`.
 
 ## §3. Giải pháp tương tự *(guide 2.1)*
 - [sản phẩm / tính năng gần giống]: một điều đáng học · một điều đáng né · mình khác gì
