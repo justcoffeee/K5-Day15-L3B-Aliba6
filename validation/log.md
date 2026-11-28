@@ -18,3 +18,10 @@ Câu hỏi sau: *"Nếu mai không được dùng nữa, bạn thấy: rất ti�
 - Sửa gì trước demo (ghi `spec.md` §10): Đã sửa `parse_request` trong `codebase/tools.py` để tách riêng từng người không tên khi không có dấu phẩy; thêm retry `HTTP 429` và hỗ trợ biến `OPENAI_*` trong `codebase/ai.py`.
 - Giữ gì và vì sao: Giữ cơ chế hỏi lại khi thiếu/chưa rõ quán (`_early_stop`, Học viên 2 tự sửa được ngay ở lần nhập lại) và giữ khả năng tự chọn món vừa ngân sách (Học viên 3 đánh giá hữu ích khi không biết ăn gì).
 - Để dành sau: Hỗ trợ khớp tên quán viết tắt / từ khoá gần đúng (vd `"bún"` → `Quán Bún Mẫu` nếu chỉ có 1 quán bún).
+
+## Ghi chú kiểm lại (28/11 ~13:10, Huy + Claude Code)
+
+- Ba phiên dùng thử chạy bằng `gpt-4o-mini` (máy Hùng, biến `OPENAI_*`), **không phải `deepseek-flash`** — model nhóm dùng cho lượt 2 và mô phỏng chi phí. Code lọc / kiểm giỏ giống nhau, phần chọn món do model khác làm.
+- Học viên 2: câu *"Quán Bún Mẫu, 3 người, 150k, 1 người vừa ăn chay vừa dị ứng đậu phộng"* với code hiện tại **không ra giỏ** mà hỏi lại (chưa hiểu "vừa … vừa …", ràng buộc chưa rõ → không lập giỏ). **Hùng cần ghi đúng câu người thử gõ lại và hệ thống trả gì**; nếu là hỏi lại thì sửa cột quan sát cho đúng.
+- Học viên 1: lỗi gõ liền không dấu phẩy được sửa trong lúc thử (`spec.md` §10, ~12:55) — code demo khác code lượt 2; đọc lại 22 câu thử sau khi sửa: không câu nào đổi.
+

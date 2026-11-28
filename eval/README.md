@@ -41,6 +41,8 @@ Một dataset: menu giả 2 quán (`data/menu.json`, `synthetic`, nhóm tự vi�
 
 Lượt chạy lại vì lỗi kỹ thuật, lượt sau CP4: ghi thêm dòng, không sửa dòng cũ.
 
+*Sau lượt 2 (28/11 ~12:55):* Hùng sửa thêm `parse_request` (tách người không tên khi gõ liền không dấu phẩy, phát hiện lúc cho người dùng thử). Chưa chạy lại cả bộ; đọc lại 22 câu thử bằng `parse_request` sau khi sửa: kết quả đọc không đổi câu nào. Kết quả 19/22 là của code lúc chạy lượt 2.
+
 ## 6. Lỗi chính
 
 Lượt 1 đạt 16/22 (72.7%) sau khi chấm lại B15 (giỏ 7 người, đề 6). **2 câu vi phạm ăn chay / dị ứng (B19, B22)** — trượt điều kiện cứng của chuẩn "đạt". Hai nhóm lỗi chính: (1) Regex parser tiếng Việt chưa nhận diện được đại từ số lượng tự nhiên ("một bạn dị ứng", "có 2 bạn ăn chay") gây lọt dị ứng (B22) và nhận nhầm tên (B19); (2) Code fallback tự hạ món sang đồ ăn vặt/ăn kèm để ép vừa ngân sách thay vì từ chối khi không đủ tiền suất chính (B17, B20). Chi tiết ở `eval/report.md`.

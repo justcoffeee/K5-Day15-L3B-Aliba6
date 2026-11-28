@@ -117,5 +117,5 @@ Ai nói trang nào (mỗi người ≥1 phần) — *đề xuất, nhóm chốt 
 
 1. **Từ chối việc ngoài phạm vi** (B21 — nhờ gọi shipper, đổi shipper): thêm nhánh nhận diện yêu cầu về giao hàng → nói rõ không làm được, chỉ tổng đài app. Đây là lý do duy nhất lượt 2 chưa đạt chuẩn.
 2. **Yêu cầu "món khác nhau" và quán thiếu món chay** (B19): khi quán không đủ món chay khác nhau thì nói thẳng và gợi ý quán khác, thay vì cho 2 người cùng một món.
-3. **Người dùng thật trên menu thật:** `__` (chủ đề lặp nhiều nhất trong `validation/log.md` của Hùng) · thử với menu thật của 1–2 quán gần lớp, đo thời gian gom món trước / sau.
+3. **Hiểu cách gõ tắt và đo với người dùng thật:** 3 học viên dùng thử hay gõ tắt / gõ liền ("bún" thay vì "Quán Bún Mẫu", "1 người ăn chay 1 người dị ứng…" không dấu phẩy, "vừa ăn chay vừa dị ứng") → nhận tên quán viết tắt, nhiều ràng buộc cho 1 người; rồi thử trên menu thật của 1–2 quán gần lớp, đo thời gian gom món trước / sau. Câu "nếu mai không dùng được nữa": 1 rất tiếc · 2 hơi tiếc · 0 không sao (n = 3).
 - Chân trang: `eval/report.md` mục lỗi còn lại · `validation/log.md`
