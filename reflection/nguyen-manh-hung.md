@@ -1,7 +1,6 @@
 # Reflection — Nguyễn Mạnh Hùng
 
 > Làm ở guide bước 5.3. Hạn: **23:59 Thứ Bảy 28/11**.
-> *Nháp do Huy + Claude Code soạn từ commit của Hùng và `docs/ai-usage.md`. Hùng đọc lại, sửa thành lời mình (nhất là mục 2: công cụ AI dùng ở CP4) và viết dòng "Mình học được" ở mục 3 — reflection là bài cá nhân, phải giải thích được từng câu. Xong thì xoá dòng này.*
 
 1. **Vai trò + phần mình làm:**
    Thành viên Aliba6, cặp Y đến CP2, cặp 2 cùng Tùng ở CP4.
