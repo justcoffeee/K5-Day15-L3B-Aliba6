@@ -44,11 +44,11 @@ Ai nói trang nào (mỗi người ≥1 phần) — *đề xuất, nhóm chốt 
 
 | Hướng | Bằng chứng | Impact / tháng | Chọn? |
 |---|---|---|---|
-| **D2 · Đặt hộ nhóm có ràng buộc ăn uống** | 20/34 đặt hộ, 9/19 gặp sự cố | **~1.690 giờ** gom món *(tự ước tính)* | **Chọn** |
+| **D2 · Đặt hộ nhóm có ràng buộc ăn uống** | 20/34 đặt hộ, 9/19 gặp sự cố | **~20 phút / người đặt hộ / tháng** đang tốn để gom món *(tự ước tính)* | **Chọn** |
 | D1 · Khiếu nại đơn giao đồ ăn | 6/19 thiếu / đổi món, phần lớn do quán / người giao | chưa đo | Loại — ngoài tầm tay người đặt, cần đơn và chính sách thật |
 | D3 · Trả hàng, hoàn tiền | chưa có bằng chứng | chưa đo | Loại |
 
-- Cách tính: 5.000 người *(tự ước tính — CP4 thay bằng nguồn công khai)* × 2 lần / tháng (trung vị câu 3) × ~10 phút / đơn (câu 7) ≈ 1.690 giờ / tháng.
+- Cách tính: 2 lần / tháng (trung vị câu 3) × ~10 phút / đơn (điểm giữa khoảng câu 7) ≈ 20 phút / người / tháng — thời gian **đang tốn**, chưa đo được sản phẩm bớt bao nhiêu. Quy mô thị trường tiềm năng: ~7,1 triệu người (trang 6).
 - **Nói thật:** nhầm món cho người dị ứng hiếm (1/19) — vẫn giữ vì sai dị ứng hại nặng, không đảo được; giỏ nháp cũng xử lý được 2 lỗi hay gặp hơn: "món nào cho ai" và "tổng gồm ship".
 - Chân trang: `spec.md` §2
 
@@ -89,24 +89,29 @@ Ai nói trang nào (mỗi người ≥1 phần) — *đề xuất, nhóm chốt 
 
 ## Trang 6 · Chi phí khi dùng thật
 
-- **Chi phí / task thành công** (kịch bản cơ sở, `deepseek-flash`): **$0.0033** = chi phí trung bình / phiên **$0.0028** ÷ tỉ lệ đạt lượt 2 (19/22 = 86%)
-- Đo qua 50 phiên mô phỏng chạy thật bằng `deepseek-flash` (`cost/simulate-2.csv`), seed 42, 3 persona theo khảo sát câu 3.
+- **Chi phí / task thành công** (`deepseek-flash`): **$0.0033** = chi phí trung bình / phiên $0.0028 ÷ tỉ lệ đạt lượt 2 (19/22)
+- **Chi phí / người / tháng:** **$0.0151** (`deepseek-flash`) · $0.0543 (`deepseek-v4-pro`, quy đổi giá trên token flash, chưa chạy thật)
+- Đo qua 50 phiên mô phỏng chạy thật bằng `deepseek-flash` (`cost/simulate-2.csv`), 3 persona theo khảo sát câu 3.
 
-| Kịch bản | Người dùng / tháng | Model nhóm dùng `deepseek-flash` | Model mạnh `deepseek-v4-pro` |
-|---|---|---|---|
-| Thấp | 1.000 *(tự ước tính)* | **$15.12** / tháng | $54.31 / tháng |
-| Cơ sở | 5.000 *(tự ước tính)* | **$75.59** / tháng | $271.54 / tháng |
-| Cao | 20.000 *(tự ước tính)* | **$302.34** / tháng | $1,086.15 / tháng |
+**Thử tải ngân sách — giả định toàn bộ thị trường tiềm năng dùng mỗi tháng** (không phải người dùng thực tế):
 
-- **So với impact:** **$0.0151 / người / tháng** so với ~20 phút gom món đang tốn / người đặt hộ / tháng → **chi phí model không phải điểm nghẽn**. Chỗ chưa chắc: số người dùng (tự ước tính) và sản phẩm bớt được bao nhiêu phút (chưa đo với người dùng thật).
-- Chân trang: `cost/cost-estimate.md` · `cost/simulate-2.csv` (run ID `simulate-2@20261128-113825`) · giá: `cost/personas.yaml`, `further-reading/model-prices.md` (25/11/2026)
+| Kịch bản | Người dùng giả định / tháng | `deepseek-flash` | `deepseek-v4-pro` |
+|---|---:|---:|---:|
+| Thấp | 4.648.178 | $70,267 / tháng | $252,432 / tháng |
+| Cơ sở | **7.090.909** | **$107,194 / tháng** | $385,090 / tháng |
+| Cao | 9.209.302 | $139,218 / tháng | $500,135 / tháng |
+
+- Cơ sở = **12 triệu người đặt đồ ăn online năm 2023** (Vietdata, số Vietdata tự công bố) × **13/22** từng đặt hộ nhóm (khảo sát); thấp / cao = khoảng Wilson 95% của 13/22. Mẫu thuận tiện, không đại diện cả nước.
+- **So với impact:** $0.0151 / người / tháng so với ~20 phút gom món đang tốn / người / tháng → **chi phí token / người thấp**. Chưa gồm máy chủ, vận hành, duy trì dữ liệu thành phần món; chưa đo thời gian tiết kiệm thật.
+- **Nói khi trình bày:** con số $107k / tháng là trần khi *cả thị trường* dùng; quy mô nhỏ hơn thì nhân $0.0151 với số người dùng thật.
+- Chân trang: `cost/cost-estimate.md` · `cost/reprice-simulate-2.json` (`python cost/reprice_existing.py`) · `cost/simulate-2.csv` · giá: DeepSeek API Docs, kiểm 28/11/2026 · Vietdata 24/12/2023
 
 ## Trang 7 · Kết luận: **ITERATE**
 
 - **Pain có thật** (trang 1): 20/34 đặt hộ, 9/19 gặp sự cố — nhưng nhầm dị ứng hiếm (1/19), lỗi hay gặp là thiếu / đổi món và vượt tiền.
 - **Sản phẩm an toàn hơn sau một lần sửa** (trang 5): 16/22 → 19/22, vi phạm dị ứng 2 → 0 — **chưa đạt chuẩn** vì 1 câu từ chối (B21).
-- **Chi phí** (trang 6): **$0.0033** / task thành công, $0.0151 / người / tháng — rẻ, không phải lý do để dừng.
-- → Chưa "go": còn câu ngoài phạm vi chưa từ chối (B21), chưa có người dùng thật thử trên menu thật, số người dùng còn tự ước tính. Không "stop": pain có thật và chi phí thấp. Quyết định: **ITERATE**.
+- **Chi phí** (trang 6): **$0.0033** / task thành công, **$0.0151** / người / tháng — chi phí token không phải lý do để dừng.
+- → Chưa "go": còn câu ngoài phạm vi chưa từ chối (B21), chưa có người dùng thật thử trên menu thật, chưa đo thời gian tiết kiệm thật. Không "stop": pain có thật và chi phí token / người thấp. Quyết định: **ITERATE**.
 
 ## Trang 8 · Nếu có thêm 1 tuần
 
