@@ -32,23 +32,38 @@ def has(cell, label):
     return label.lower() in cell.lower()
 
 
-def main(path):
+def contradictory_q8(r):
+    """Câu 8 vừa chọn "Không gặp chuyện nào" vừa chọn ô khác — form đã dặn không chọn thêm.
+    Không dùng câu 8 của phiếu này (phiếu và các câu khác vẫn giữ). Luật này có từ lượt CP3."""
+    cell = r["q8_su_co"]
+    return has(cell, "Không gặp chuyện nào") and any(has(cell, s) for s in SU_CO + KHAC_Q8)
+
+
+def main(path, out=None):
     rows = load(path)
     if os.path.basename(path).startswith("raw-"):
-        with open(os.path.join(HERE, "results.csv"), "w", encoding="utf-8", newline="") as f:
+        # raw-20261127-1805.csv (CP2) → results.csv; bản xuất sau → results-<tên>.csv hoặc tên truyền vào
+        out = out or os.path.join(HERE, "results.csv" if "20261127-1805" in path else "results-cp3.csv")
+        with open(out, "w", encoding="utf-8", newline="") as f:
             w = csv.DictWriter(f, fieldnames=COLS)
             w.writeheader()
             w.writerows(rows)
+        print("Đã ghi", os.path.relpath(out, HERE))
     n = len(rows)
     yes = [r for r in rows if r["q2_dat_ho_1_thang"].strip() == "Có"]
     y = len(yes)
     print("Phiếu: %d · giờ phiếu đầu %s · phiếu cuối %s" % (n, rows[0]["timestamp"], rows[-1]["timestamp"]))
     print("Vai (q1):", {v: sum(r["q1_vai"] == v for r in rows) for v in sorted({r["q1_vai"] for r in rows})})
     print("Từng đặt hộ nhóm ≥3 người trong 1 tháng (q2 = Có): %s   [giả thuyết ≥50%%]" % pct(y, n))
-    inc = [r for r in yes if any(has(r["q8_su_co"], s) for s in SU_CO)]
-    print("Gặp ≥1 sự cố trong 3 ô (q8) / q2=Có: %s   [giả thuyết ≥1/3]" % pct(len(inc), y))
+    bad = [r for r in yes if contradictory_q8(r)]
+    usable = [r for r in yes if not contradictory_q8(r)]
+    u = len(usable)
+    print("Câu 8 mâu thuẫn, không dùng cho chỉ số câu 8: %d phiếu → mẫu số câu 8 = %d" % (len(bad), u))
+    inc = [r for r in usable if any(has(r["q8_su_co"], s) for s in SU_CO)]
+    print("Gặp ≥1 sự cố trong 3 ô (q8) / câu 8 dùng được: %s   [giả thuyết ≥1/3]" % pct(len(inc), u))
     for s in SU_CO + KHAC_Q8 + ["Không gặp chuyện nào"]:
-        print("   q8 · %s: %s" % (s, pct(sum(has(r["q8_su_co"], s) for r in yes), y)))
+        print("   q8 · %s: %s" % (s, pct(sum(has(r["q8_su_co"], s) for r in usable), u)))
+    print("Đồng ý hỏi thêm (q10) / q2=Có: %s" % pct(sum(r["q10_san_long_hoi_them"].startswith("Có") for r in yes), y))
     slow = sum(r["q7_thoi_gian"] in ("10–20 phút", "Trên 20 phút") for r in yes)
     print("Mất >10 phút (q7) / q2=Có: %s · không nhớ: %d" % (pct(slow, y), sum(r["q7_thoi_gian"] == "Không nhớ" for r in yes)))
     for v in ("Có", "Không", "Không rõ, mình không hỏi"):
@@ -64,4 +79,4 @@ def main(path):
 
 
 if __name__ == "__main__":
-    main(sys.argv[1] if len(sys.argv) > 1 else os.path.join(HERE, "results.csv"))
+    main(sys.argv[1] if len(sys.argv) > 1 else os.path.join(HERE, "results.csv"), sys.argv[2] if len(sys.argv) > 2 else None)

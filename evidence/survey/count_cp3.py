@@ -1,4 +1,5 @@
 """Đếm bản chụp khảo sát CP3; không sửa dữ liệu.
+Đếm lại từ bản ẩn danh trong repo (khuyên dùng): python evidence/survey/count.py evidence/survey/results-cp3.csv
 Hiển thị số tổng hợp: python evidence/survey/count_cp3.py
 Đếm lại bản nội bộ trên máy: python evidence/survey/count_cp3.py <local-snapshot.json>
 """

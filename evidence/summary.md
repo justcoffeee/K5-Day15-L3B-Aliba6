@@ -9,7 +9,7 @@
 |---|---|---|
 | Đào data (x/N, %, cách đếm chạy lại được, ≥5 ví dụ) | ☐ | `evidence/data-mining.md` |
 | Phỏng vấn (≥3 người ngoài nhóm, đúng người dùng) | Chưa chốt đạt ngưỡng: có 3 ghi chép, đã xác nhận ngày 27/11/2026, trực tuyến, Nghĩa hỏi/ghi; còn các điểm nội dung cần xác nhận | `evidence/interviews/P1.md`, `P2.md`, `P3.md` |
-| Khảo sát (≥20 người ngoài nhóm, đúng người dùng) | ☑ Lượt CP3: 34 phiếu ngoài nhóm, không trùng theo xác nhận của Nghĩa; **20 người đã đặt hộ nhóm** | `evidence/survey/counts-cp3-20261128.json` · `evidence/survey/count_cp3.py` |
+| Khảo sát (≥20 người ngoài nhóm, đúng người dùng) | ☑ Lượt CP3: 34 phiếu ngoài nhóm, không trùng theo xác nhận của Nghĩa; **20 người đã đặt hộ nhóm** | `evidence/survey/results-cp3.csv` · đếm lại: `python evidence/survey/count.py evidence/survey/results-cp3.csv` · số chốt: `counts-cp3-20261128.json` |
 
 ## 2. Số chính
 
@@ -22,7 +22,7 @@
 - Thời gian: 13/20 chọn 5–10 phút; 4/20 chọn 10–20 phút; 1/20 trên 20 phút; 2/20 không nhớ. Không coi khoảng 10–20 là chắc chắn >10 và không tính trung bình phút từ khoảng chọn.
 - **8/20** người đủ điều kiện đồng ý hỏi thêm. Không có thông tin liên hệ trong form.
 - Không tính trung bình tần suất câu 3 khi câu trả lời chưa được chuẩn hoá/xác minh. Không gắn nhãn riêng từng dòng hoặc sửa câu trả lời gốc.
-- Nguồn: bảng phản hồi Google Sheets; `counts-cp3-20261128.json` chỉ lưu số tổng hợp. `python evidence/survey/count_cp3.py` hiển thị số đã công bố; để đếm lại cần bản chụp nội bộ trên máy và truyền đường dẫn cho script. Dữ liệu từng phiếu giữ riêng, không công khai. Kết quả CP2 dưới đây là lịch sử, không phải số mới nhất.
+- Nguồn: bảng phản hồi Google Sheets, bản xuất CSV lúc 08:30 28/11 (file gốc `raw-20261128-0830.csv`, không commit). Bản từng phiếu đã ẩn danh: `evidence/survey/results-cp3.csv` (cùng cột q1–q10 như `results.csv` CP2; form không thu liên hệ, không có tên). Đếm lại: `python evidence/survey/count.py evidence/survey/results-cp3.csv` — ra đúng các số trên. `counts-cp3-20261128.json` là số tổng hợp Nghĩa chốt, khớp với lần đếm lại. Kết quả CP2 dưới đây là lịch sử, không phải số mới nhất.
 
 ### Lịch sử CP2 — giữ số đã báo cáo
 
