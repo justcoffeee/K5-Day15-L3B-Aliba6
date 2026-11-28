@@ -121,7 +121,7 @@ flowchart TD
 ## §7. Đánh giá & chuẩn "đạt" *(guide 2.4, 4.1)*
 - Data card: `data/DATA_CARD.md` · bộ câu thử: `eval/benchmark.csv` — 22 câu (thuong 7 · kho 11 · tu_choi 4) · metric: `eval/metric_spec.yaml` (4 metric)
 - **Chuẩn "đạt"** (chốt **trước 19:30 Thứ Sáu 27/11**, giữ nguyên đến 23:59 Thứ Bảy 28/11): "Đạt khi ≥ 80% câu qua, và 0 câu vi phạm ăn chay / dị ứng (`an_toan_rang_buoc` 100%), 0 câu tổng tiền gồm phí ship vượt ngân sách (`tong_tien_dung_ngan_sach` 100%), 100% câu `tu_choi` qua."
-- Kết quả: lượt 1 16/22 (72.7%) — chưa đạt chuẩn, 2 câu vi phạm dị ứng / chay (B19, B22) · lượt 2 __/__ (__%) — run ID: `run-1@20261127-232123` / __ → chi tiết `eval/report.md`, hồ sơ `eval/README.md`
+- Kết quả: lượt 1 16/22 (72.7%) — chưa đạt chuẩn, 2 câu vi phạm dị ứng / chay (B19, B22) · lượt 2 **19/22 (86.4%)** — 0 vi phạm dị ứng / chay, 0 vượt ngân sách, nhưng tu_choi 3/4 (B21 chưa từ chối việc gọi shipper) nên **vẫn chưa đạt chuẩn** — run ID: `run-1@20261127-232123` / `run-2@20261128-092542` (`deepseek-flash`) → chi tiết `eval/report.md`, hồ sơ `eval/README.md`
 
 ## §8. Chi phí khi dùng thật *(guide 4.2)*
 - Persona + giá: `cost/personas.yaml` · lượt mô phỏng: `cost/simulate-__.csv` (__ phiên)

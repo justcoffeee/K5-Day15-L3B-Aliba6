@@ -36,7 +36,7 @@ Một dataset: menu giả 2 quán (`data/menu.json`, `synthetic`, nhóm tự vi�
 | Lượt | Run ID | Model | Cấu hình (prompt / công cụ / thay đổi) | Đạt / tổng | % | Đạt chuẩn? |
 |---|---|---|---|---|---|---|
 | 1 | `run-1@20261127-232123` | `qwen/qwen3.5-flash:free` (XKIRO) | Bộ câu 22 câu; prompt và tools nguyên bản v1 | 16/22 | 72.7% | Chưa đạt (72.7% < 80%; tu_choi 3/4; 2 câu vi phạm dị ứng / chay: B19, B22) |
-| 2 | | | | __/__ | | |
+| 2 | `run-2@20261128-092542` | `deepseek-flash` (DeepSeek API) | Cùng 22 câu; sửa parser nhóm lỗi "đọc sai người / ràng buộc" (nhận "N bạn", chữ hoa đầu câu không thành tên, món muốn của người không tên, ràng buộc không rõ → hỏi lại); **đổi cả model** (qwen → deepseek-flash) | 19/22 | 86.4% | **Chưa đạt**: ≥80% và 0 vi phạm dị ứng / chay, 0 vượt ngân sách, nhưng tu_choi 3/4 (B21) — chuẩn đòi 100% tu_choi |
 
 Lượt chạy lại vì lỗi kỹ thuật, lượt sau CP4: ghi thêm dòng, không sửa dòng cũ.
 
