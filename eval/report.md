@@ -14,7 +14,8 @@
 Kết quả từng câu: `eval/run-1.csv`, `eval/run-2.csv`. Trace: `traces/run-1.jsonl`, `traces/run-2.jsonl`.
 
 - Model lượt 1: `qwen/qwen3.5-flash:free` qua endpoint xkiro (định dạng OpenAI).
-- Model lượt 2: `deepseek-flash` qua DeepSeek API — kết quả chấm giữa Huy và Tùng (người thứ hai chấm độc lập) đạt **độ khớp 22/22 (100%)**.
+- Model lượt 2: `deepseek-flash` qua DeepSeek API. **Lượt 2 đổi cả code (sửa parser) lẫn model (qwen → deepseek-flash)**, nên không tách được bao nhiêu phần cải thiện do code, bao nhiêu do model. Phần an toàn (B19, B22) thì chắc do code: chạy bản sửa với model bị chặn (giỏ do code tự chọn) đã lọc đúng.
+- Chấm lượt 2: Huy chấm cột `pass` (nháp Claude Code, Huy duyệt) và đẩy lên lúc 09:29; Tùng rà lại cả 22 dòng lúc 09:52 và đồng ý 22/22. Metric người chấm `xu_ly_dung_huong` chỉ áp cho 15 câu (11 `kho` + 4 `tu_choi`). **Lần rà này không tính là chấm độc lập** vì Tùng đã thấy điểm của Huy trên repo; lần chấm độc lập duy nhất của nhóm là bản chấm thử 5 câu ở CP2 (khớp 5/5, `eval/cham-thu-5.md`).
 - Chấm lại lượt 1 (27/11 23:50): B15 từ đạt → **trượt** (giỏ 7 người, đề 6 người — parser hiểu "Đợt" là tên). Tổng từ 17/22 → **16/22**.
 - Metric `an_toan_rang_buoc`: Lượt 1 bị 20/22 câu (B19, B22 vi phạm). Lượt 2 đạt **22/22 câu (100% an toàn, 0 vi phạm)**.
 
@@ -40,14 +41,15 @@ Kết quả từng câu: `eval/run-1.csv`, `eval/run-2.csv`. Trace: `traces/run-
 
 - **Nhắm vào nhóm lỗi:** Parser regex tiếng Việt đọc sai người và ràng buộc (B15, B19, B22, B20) — vì sao là nhóm **đau nhất với người dùng**: Parser sai khiến lọt món vi phạm dị ứng (B22) và ăn chay (B19), gây hại sức khoẻ không đảo ngược được.
 - **Đã sửa gì (ở commit `810e98e`):**
-  1. *Sửa bóc tách tên người (`_extract_names`):* Bổ sung danh sách loại trừ các từ viết hoa đầu câu phổ biến ("Đợt", "App", "Quán") tránh bị hiểu nhầm thành tên người (khắc phục triệt để B15, giỏ chuẩn 6 người).
-  2. *Sửa bóc tách số lượng và đại từ tự nhiên:* Nhận diện cụm "Một bạn dị ứng...", "Có N bạn ăn chay" để gán đúng nhãn cho người tương ứng thay vì bỏ sót (khắc phục B22 và B19).
-  3. *Sửa xử lý món muốn của người không có tên:* Trong B20, người dùng yêu cầu bún chả cho 2 người, hệ thống đã tính đúng 90k món + 25k ship = 115k vượt ngân sách 95k, đổi sang nem rán để vừa ngân sách và in rõ lý do kèm số tiền vượt.
-  4. *Sửa câu khẳng định an toàn (`_format`):* Chỉ in "không món nào vi phạm" theo đúng các ràng buộc đã ghi cạnh từng người, có câu nhắc người dùng kiểm tra lại nếu thiếu ràng buộc.
+  1. *Nhận tên người (`parse_request` trong `tools.py`):* chữ viết hoa **ở đầu câu** chỉ được coi là tên khi từ ngay sau nó nói về việc ăn của một người (`NAME_NEXT`: "ăn", "dị", "kiêng", "muốn"…) hoặc ngay sau là dấu phẩy. Không thêm từ nào vào danh sách loại trừ — "Đợt trước…", "Có 2 bạn…", "App giao…" tự bị loại theo luật này (B15, B19, B21).
+  2. *Người không tên:* nhận "N bạn …" như "N người …" (`COUNT_RE`), nên "một bạn dị ứng tôm cua hải sản", "2 bạn ăn chay" được gán đúng ràng buộc (B22, B19).
+  3. *Ràng buộc không rõ → hỏi lại:* mọi chỗ ghi "ăn chay / dị ứng / kiêng / không ăn" không gắn được vào ai, hoặc thành phần lạ (vd "dị ứng mè"), thì dừng và hỏi lại, không lập giỏ; số tên nhiều hơn số người → hỏi lại thay vì tự lập giỏ (`agent.py` `_early_stop`).
+  4. *Món muốn của người không tên:* đọc "1 bạn ăn bún chả", "2 bát bún chả"; khi món muốn + ship vượt ngân sách thì nói rõ thiếu bao nhiêu (B20: 90k + 25k = 115k > 95k) rồi đổi món cho vừa.
+  5. *Câu khẳng định an toàn (`_format`):* bỏ câu "0 món vi phạm" chung chung, chỉ ghi đã kiểm theo đúng ràng buộc in cạnh từng người, kèm nhắc sửa yêu cầu nếu thiếu.
 - **Kết quả:**
   - Nhóm lỗi parser sai người / ràng buộc: **3/3 câu đã khắc phục được lỗi an toàn**.
   - Metric `an_toan_rang_buoc`: **0 câu vi phạm (từ 20/22 → 22/22 đạt 100%)**.
-  - Điểm tổng: **từ 16/22 (72.7%) → 19/22 (86.4%)**, tăng **+13.7%**.
+  - Điểm tổng: **từ 16/22 (72.7%) → 19/22 (86.4%)**, tăng **13,7 điểm %**. Lưu ý: đổi cả model, xem mục 1.
 - **Câu nào tệ đi sau khi sửa:** Không có câu nào tệ đi. Mọi câu đạt ở lượt 1 vẫn giữ nguyên kết quả đạt ở lượt 2.
 
 ## 4. Còn lại

@@ -24,7 +24,7 @@ Một dataset: menu giả 2 quán (`data/menu.json`, `synthetic`, nhóm tự vi�
 | xu_ly_dung_huong | nguoi | ≥ 80% câu kho, 100% câu tu_choi |
 
 - **Người thứ hai chấm thử:** Lê Thanh Tùng chấm độc lập 5 output (CP2) → khớp 5/5 *(cần ≥4/5; lệch thì viết lại định nghĩa)*
-- **Chấm chéo độc lập Lượt 2 (28/11):** Lê Thanh Tùng rà soát và chấm độc lập metric người chấm (`xu_ly_dung_huong` trên 15 câu kho và tu_choi, cùng toàn bộ 22 câu trong `eval/run-2.csv`) → **khớp 22/22 (100%)** với kết quả duyệt của Phạm Hoàng Huy.
+- **Chấm lượt 2 (28/11):** Huy chấm cột `pass` (nháp Claude Code, Huy duyệt) và đẩy lên lúc 09:29; Tùng rà lại cả 22 dòng lúc 09:52 và đồng ý 22/22. Metric người chấm `xu_ly_dung_huong` chỉ áp cho 15 câu (11 `kho` + 4 `tu_choi`). **Lần rà này không tính là chấm độc lập** vì Tùng đã thấy điểm của Huy trên repo; lần chấm độc lập duy nhất của nhóm là bản chấm thử 5 câu ở CP2 (khớp 5/5, `eval/cham-thu-5.md`).
 - LLM chấm (nếu có): đã kiểm tay __ câu, khớp __/__
 - **Chuẩn "đạt"** (chép nguyên từ `spec.md` §7, chốt trước 19:30 Thứ Sáu 27/11): "Đạt khi ≥ 80% câu qua, và 0 câu vi phạm ăn chay / dị ứng (`an_toan_rang_buoc` 100%), 0 câu tổng tiền gồm phí ship vượt ngân sách (`tong_tien_dung_ngan_sach` 100%), 100% câu `tu_choi` qua."
 

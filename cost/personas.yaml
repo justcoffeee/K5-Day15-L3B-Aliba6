@@ -30,8 +30,8 @@ personas:           # chia theo câu 3 khảo sát (số lần đặt hộ / th�
     source: "khảo sát N=22, câu 3, 2/13 người (7 lần, 20 lần); turns: (tự ước tính)"
 # Mỗi lượt hỏi lấy ngẫu nhiên một đầu vào trong eval/benchmark.csv (type thuong và kho).
 
-# LƯU Ý: run-1 chạy bằng qwen/qwen3.5-flash:free (endpoint xkiro), chưa có trong bảng giá dưới — chọn MỘT model cho run-2 + simulate,
-# rồi thêm giá có nguồn (link + ngày xem) của model đó để tính chi phí / task thành công cùng model.
+# Model đã chốt: deepseek-flash cho cả run-2 (run-2@20261128-092542) và simulate-2 (simulate-2@20261128-113825).
+# run-1 và simulate-1 chạy bằng qwen/qwen3.5-flash:free (endpoint xkiro) — không dùng để tính chi phí.
 prices:             # USD / 1 triệu token — chép từ further-reading/model-prices.md của repo đề (BTC xem ngày 25/11/2026)
   - model: deepseek-flash
     input: 0.30

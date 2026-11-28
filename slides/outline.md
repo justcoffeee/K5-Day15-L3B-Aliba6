@@ -89,24 +89,24 @@ Ai nói trang nào (mỗi người ≥1 phần) — *đề xuất, nhóm chốt 
 
 ## Trang 6 · Chi phí khi dùng thật
 
-- **Chi phí / task thành công** (kịch bản cơ sở, `deepseek-flash`): **$0.0014 USD** (≈ 35 ₫) = chi phí trung bình / phiên **$0.0012** ÷ tỉ lệ đạt lượt 2 (19/22 = 86,4%)
-- Đo qua 50 phiên mô phỏng thật (`cost/simulate-1.csv`), seed 42, 3 persona (`personas.yaml`).
+- **Chi phí / task thành công** (kịch bản cơ sở, `deepseek-flash`): **$0.0033** = chi phí trung bình / phiên **$0.0028** ÷ tỉ lệ đạt lượt 2 (19/22 = 86%)
+- Đo qua 50 phiên mô phỏng chạy thật bằng `deepseek-flash` (`cost/simulate-2.csv`), seed 42, 3 persona theo khảo sát câu 3.
 
-| Kịch bản | Người dùng / tháng (nguồn) | Model rẻ `deepseek-flash` | Model mạnh `deepseek-v4-pro` |
+| Kịch bản | Người dùng / tháng | Model nhóm dùng `deepseek-flash` | Model mạnh `deepseek-v4-pro` |
 |---|---|---|---|
-| Thấp | 1.000 người *(ước tính)* | **$6.67** USD / tháng | **$27.94** USD / tháng |
-| Cơ sở | 5.000 người *(ước tính)* | **$33.34** USD / tháng | **$139.69** USD / tháng |
-| Cao | 20.000 người *(ước tính)* | **$133.38** USD / tháng | **$558.75** USD / tháng |
+| Thấp | 1.000 *(tự ước tính)* | **$15.12** / tháng | $54.31 / tháng |
+| Cơ sở | 5.000 *(tự ước tính)* | **$75.59** / tháng | $271.54 / tháng |
+| Cao | 20.000 *(tự ước tính)* | **$302.34** / tháng | $1,086.15 / tháng |
 
-- **So với impact:** chi phí / người / tháng chỉ **$0.0067** (≈ **168 ₫ / người / tháng**) so với ~20 phút gom món / người đặt hộ / tháng → **Cực kỳ đáng làm**, chi phí AI không đáng kể so với giá trị tiết kiệm thời gian và triệt tiêu nguy cơ dị ứng.
-- Chân trang: `cost/cost-estimate.md` · `cost/simulate-1.csv` (50 phiên, run ID `simulate-1@20261128-095850`) · giá: `cost/personas.yaml`
+- **So với impact:** **$0.0151 / người / tháng** so với ~20 phút gom món đang tốn / người đặt hộ / tháng → **chi phí model không phải điểm nghẽn**. Chỗ chưa chắc: số người dùng (tự ước tính) và sản phẩm bớt được bao nhiêu phút (chưa đo với người dùng thật).
+- Chân trang: `cost/cost-estimate.md` · `cost/simulate-2.csv` (run ID `simulate-2@20261128-113825`) · giá: `cost/personas.yaml`, `further-reading/model-prices.md` (25/11/2026)
 
 ## Trang 7 · Kết luận: **ITERATE**
 
 - **Pain có thật** (trang 1): 20/34 đặt hộ, 9/19 gặp sự cố — nhưng nhầm dị ứng hiếm (1/19), lỗi hay gặp là thiếu / đổi món và vượt tiền.
 - **Sản phẩm an toàn hơn sau một lần sửa** (trang 5): 16/22 → 19/22, vi phạm dị ứng 2 → 0 — **chưa đạt chuẩn** vì 1 câu từ chối (B21).
-- **Chi phí** (trang 6): **$0.0014** / task thành công — **siêu rẻ** (chỉ 168 ₫ / người / tháng) so với impact tiết kiệm 1.690 giờ / tháng.
-- → Chưa "go" khi còn câu ngoài phạm vi chưa từ chối (B21) và chưa có người dùng thật thử trên menu thật; không "stop" vì pain có thật và chi phí vận hành cực thấp. Quyết định: **ITERATE** tiếp vòng sau.
+- **Chi phí** (trang 6): **$0.0033** / task thành công, $0.0151 / người / tháng — rẻ, không phải lý do để dừng.
+- → Chưa "go": còn câu ngoài phạm vi chưa từ chối (B21), chưa có người dùng thật thử trên menu thật, số người dùng còn tự ước tính. Không "stop": pain có thật và chi phí thấp. Quyết định: **ITERATE**.
 
 ## Trang 8 · Nếu có thêm 1 tuần
 
