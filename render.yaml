@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: aliba6-food-ordering
+    runtime: python
+    region: singapore
+    plan: free
+    buildCommand: ""
+    startCommand: python server.py
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: MODEL_PROVIDER
+        value: deepseek
+      - key: MODEL_NAME
+        value: deepseek-chat
+      - key: API_KEY
+        sync: false
