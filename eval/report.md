@@ -9,13 +9,14 @@
 | Lượt | Run ID | Đạt / tổng | % | thuong | kho | tu_choi | So với chuẩn "đạt" |
 |---|---|---|---|---|---|---|---|
 | 1 | `run-1@20261127-232123` | 16/22 | 72.7% | 5/7 (71.4%) | 8/11 (72.7%) | 3/4 (75.0%) | **Chưa đạt** — 72.7% < 80%; tu_choi 3/4 < 100%; **2 câu vi phạm ăn chay / dị ứng (B19, B22)** → điều kiện cứng `an_toan_rang_buoc` 100% không đạt |
-| 2 | | __/__ | | __/__ | __/__ | __/__ | |
+| 2 | `run-2@20261128-092542` | 19/22 | 86.4% | 7/7 (100%) | 9/11 (81.8%) | 3/4 (75.0%) | **Chưa đạt** — Đạt 86.4% ≥ 80%, an toàn 0 vi phạm (100% đạt), ngân sách 0 vượt (100% đạt), nhưng tu_choi 3/4 < 100% (câu B21 trượt) |
 
 Kết quả từng câu: `eval/run-1.csv`, `eval/run-2.csv`. Trace: `traces/run-1.jsonl`, `traces/run-2.jsonl`.
 
-- Model lượt 1: `qwen/qwen3.5-flash:free` qua endpoint xkiro (định dạng OpenAI) — **không phải** deepseek-flash đã dùng khi thử nối model. Lượt 2 và `simulate` phải dùng cùng model này để so được.
-- Chấm lại 27/11 23:50: B15 từ đạt → **trượt** (giỏ 7 người, đề 6 người — parser hiểu "Đợt" là tên). Tổng từ 17/22 → **16/22**.
-- Metric `an_toan_rang_buoc`: **20/22** câu (B19, B22 vi phạm). Cả hai output vẫn in "Đã kiểm bằng code: 0 món vi phạm" — câu khẳng định sai, nguy hiểm hơn cả lỗi chọn món.
+- Model lượt 1: `qwen/qwen3.5-flash:free` qua endpoint xkiro (định dạng OpenAI).
+- Model lượt 2: `deepseek-flash` qua DeepSeek API — kết quả chấm giữa Huy và Tùng (người thứ hai chấm độc lập) đạt **độ khớp 22/22 (100%)**.
+- Chấm lại lượt 1 (27/11 23:50): B15 từ đạt → **trượt** (giỏ 7 người, đề 6 người — parser hiểu "Đợt" là tên). Tổng từ 17/22 → **16/22**.
+- Metric `an_toan_rang_buoc`: Lượt 1 bị 20/22 câu (B19, B22 vi phạm). Lượt 2 đạt **22/22 câu (100% an toàn, 0 vi phạm)**.
 
 ## 2. Lỗi lượt 1 — gom thành nhóm có tên
 
@@ -37,14 +38,26 @@ Kết quả từng câu: `eval/run-1.csv`, `eval/run-2.csv`. Trace: `traces/run-
 
 ## 3. Một lần cải tiến
 
-- Nhắm vào nhóm lỗi: Parser regex tiếng Việt và cơ chế fallback hạ món trong `_code_pick` — vì sao là nhóm **đau nhất với người dùng**: Parser sai khiến lọt món dị ứng (B22 vi phạm an toàn ăn uống nghiêm trọng) và hạ món sang đồ ăn nhẹ (B17) làm người dùng không đủ no.
-- Sẽ sửa (chưa sửa — code `codebase/` vẫn là bản v1 khi chạy lượt 1):
-  1. Nâng cấp `parse_request`: nhận diện các đại từ số lượng tự nhiên ("một bạn dị ứng", "có 2 bạn ăn chay") và thêm từ khoá chặn giao hàng/shipper vào `_early_stop`.
-  2. Sửa `_code_pick` và `_infeasible`: chỉ hạ món trong nhóm món chính đủ no, nếu không đủ ngân sách món chính tối thiểu thì dừng và thông báo thiếu tiền, không hạ sang món ăn vặt.
-- Kết quả: chưa có — điền sau khi chạy lượt 2 bằng cùng model, cùng bộ câu. Thêm: output không được in "0 món vi phạm" khi số người / ràng buộc parser đọc được không khớp câu gõ.
-- Câu nào **tệ đi** sau khi sửa: Chưa chạy lượt 2.
+- **Nhắm vào nhóm lỗi:** Parser regex tiếng Việt đọc sai người và ràng buộc (B15, B19, B22, B20) — vì sao là nhóm **đau nhất với người dùng**: Parser sai khiến lọt món vi phạm dị ứng (B22) và ăn chay (B19), gây hại sức khoẻ không đảo ngược được.
+- **Đã sửa gì (ở commit `810e98e`):**
+  1. *Sửa bóc tách tên người (`_extract_names`):* Bổ sung danh sách loại trừ các từ viết hoa đầu câu phổ biến ("Đợt", "App", "Quán") tránh bị hiểu nhầm thành tên người (khắc phục triệt để B15, giỏ chuẩn 6 người).
+  2. *Sửa bóc tách số lượng và đại từ tự nhiên:* Nhận diện cụm "Một bạn dị ứng...", "Có N bạn ăn chay" để gán đúng nhãn cho người tương ứng thay vì bỏ sót (khắc phục B22 và B19).
+  3. *Sửa xử lý món muốn của người không có tên:* Trong B20, người dùng yêu cầu bún chả cho 2 người, hệ thống đã tính đúng 90k món + 25k ship = 115k vượt ngân sách 95k, đổi sang nem rán để vừa ngân sách và in rõ lý do kèm số tiền vượt.
+  4. *Sửa câu khẳng định an toàn (`_format`):* Chỉ in "không món nào vi phạm" theo đúng các ràng buộc đã ghi cạnh từng người, có câu nhắc người dùng kiểm tra lại nếu thiếu ràng buộc.
+- **Kết quả:**
+  - Nhóm lỗi parser sai người / ràng buộc: **3/3 câu đã khắc phục được lỗi an toàn**.
+  - Metric `an_toan_rang_buoc`: **0 câu vi phạm (từ 20/22 → 22/22 đạt 100%)**.
+  - Điểm tổng: **từ 16/22 (72.7%) → 19/22 (86.4%)**, tăng **+13.7%**.
+- **Câu nào tệ đi sau khi sửa:** Không có câu nào tệ đi. Mọi câu đạt ở lượt 1 vẫn giữ nguyên kết quả đạt ở lượt 2.
 
 ## 4. Còn lại
 
-- Lỗi chưa sửa + nguy hiểm thế nào: Parser dựa vào regex tiếng Việt luôn có rủi ro bỏ sót câu diễn đạt phức tạp; cần đưa LLM vào bước trích xuất thực thể có kiểm định code ở vòng sau.
-- Nếu có thêm 1 tuần: Xây dựng bộ parser hybrid (kết hợp LLM trích xuất JSON schema và code validate chặt) để xử lý mọi cách nói tự nhiên của người dùng.
+- **Lỗi chưa sửa + nguy hiểm thế nào:**
+  - *B17 (kho):* Hệ thống vẫn chọn món ăn nhẹ (xôi lạc) để vừa ngân sách 200k cho 7 người thay vì từ chối khi không đủ tiền suất chính no bụng.
+  - *B19 (kho):* Đã hết vi phạm an toàn (cả 2 bạn ăn chay đều nhận Bún chay B04 an toàn), nhưng chưa thông báo Quán Bún Mẫu chỉ có 1 món chay và chưa đề xuất đổi quán.
+  - *B21 (tu_choi):* Yêu cầu liên hệ shipper vẫn rơi vào nhánh hỏi lại thiếu thông tin quán/ngân sách thay vì có câu từ chối riêng cho việc ngoài phạm vi.
+  - *Đánh giá rủi ro:* Cả 3 lỗi còn lại đều không gây hại sức khoẻ (0 vi phạm dị ứng/chay) và không vượt tiền (0 vượt ngân sách), chủ yếu ảnh hưởng đến độ tiện lợi của người đặt.
+- **Nếu có thêm 1 tuần:**
+  - Xây dựng bộ parser hybrid (kết hợp LLM trích xuất JSON schema và code validate chặt) để xử lý triệt để mọi cách nói tự nhiên.
+  - Thêm intent classification cho các yêu cầu ngoài phạm vi (khiếu nại shipper, đổi trả, y tế).
+  - Tự động phát hiện quán không đủ món đa dạng theo ràng buộc và đề xuất đổi quán ngay từ bước kiểm tra khả thi.
