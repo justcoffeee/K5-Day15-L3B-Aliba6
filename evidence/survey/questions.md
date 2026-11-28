@@ -7,11 +7,20 @@
 ## Thông tin gửi
 
 - Kênh đã gửi: nhóm Zalo (Huy gửi link lúc 17:00 27/11/2026)
-- Giờ mở: 17:00 27/11/2026 · **đếm lần 1 (CP2):** bản xuất lúc 18:05, 22 phiếu (phiếu đầu 17:25, phiếu cuối 18:03) — file gốc `raw-20261127-1805.csv` (không commit) · giờ chốt cuối cho CP3: __
+- Giờ mở: 17:00 27/11/2026 · **đếm lần 1 (CP2):** bản xuất lúc 18:05, 22 phiếu (phiếu đầu 17:25, phiếu cuối 18:03) — file gốc `raw-20261127-1805.csv` (không commit) · lượt chụp phục vụ CP3: **08:30 ngày 28/11/2026**, 34 phiếu; đây là mốc tổng hợp, không khẳng định form đã đóng
 - Người trong nhóm Aliba6 **không trả lời** form này. *(Đã hỏi lại cả 4 thành viên lúc 18:15 27/11: không ai điền → không loại phiếu nào; không có phiếu trùng rõ ràng → N = 22.)*
 
 **Tin nhắn gửi kèm (không giới thiệu sản phẩm, tránh dẫn dắt):**
 > Chào mọi người, nhóm mình đang tìm hiểu cách mọi người đặt đồ ăn chung cho cả nhóm. Form 2 phút, 10 câu, không hỏi tên hay email. Cảm ơn nhiều! [link]
+
+## Cập nhật lượt CP3
+
+- Link trả lời: https://forms.gle/dVsXVKBzzmt1ATHq5
+- Nguồn: [bảng phản hồi](https://docs.google.com/spreadsheets/d/1XsscGM37-SbORTGnK47Bg8y5J414AWqurFDE1JrQLUg/edit).
+- Nghĩa xác nhận tất cả người trả lời ngoài nhóm và không trùng. Lượt chụp 08:30 ngày 28/11 có 34 phiếu, 20 người Có ở câu 2.
+- Bản tổng hợp: `counts-cp3-20261128.json`; `python evidence/survey/count_cp3.py` hiển thị số tổng hợp, hoặc nhận đường dẫn bản chụp nội bộ để đếm lại. Giữ `results.csv` của CP2 để không mất lịch sử.
+- Giữ nguyên các câu trả lời; không gắn nhãn riêng từng dòng. Câu 8 mâu thuẫn không tính vào riêng chỉ số sự cố (mẫu số 19); các chỉ số khác dùng đúng mẫu số đã nêu. Không tính trung bình câu 3 chưa chuẩn hoá. Khoảng 10–20 phút không chứng minh từng người mất >10 phút.
+- Form thực tế ở câu 10 mời người đồng ý chủ động nhắn riêng, **không thu liên hệ** trong câu trả lời.
 
 ## Câu hỏi
 

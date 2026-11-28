@@ -33,3 +33,8 @@ README của nhóm có mục "Dùng AI vào việc gì" (2–3 dòng, bắt bu�
 
 - Nghĩa xác nhận ngày phỏng vấn 27/11/2026, hình thức trực tuyến, Nghĩa hỏi và ghi cho cả ba hồ sơ. Codex chỉ điền những thông tin đã được cung cấp, không tự gán giờ hoặc trả lời thay người tham gia.
 - Các điểm chưa có phản hồi bổ sung được ghi rõ trạng thái trong P1–P3. Theo yêu cầu của Nghĩa, trích dẫn chưa xác nhận trong `evidence/summary.md` quay về nguồn công khai W02/W04/W03; chưa chốt kết quả 2/3 phỏng vấn.
+
+## Bổ sung 28/11/2026 — khảo sát CP3
+
+- Codex đọc bảng phản hồi kết nối, giữ bản từng phiếu trên máy, xuất JSON chỉ gồm số tổng hợp, viết script đếm lại từ bản nội bộ và cập nhật summary/canvas. Không tạo hoặc sửa câu trả lời.
+- Nghĩa xác nhận toàn bộ người trả lời ngoài nhóm và không trùng. Không gắn nhãn riêng từng phiếu; câu 8 mâu thuẫn không dùng cho riêng chỉ số câu 8, các câu khác giữ nguyên. Không dùng câu 3 chưa xác minh để tính trung bình.

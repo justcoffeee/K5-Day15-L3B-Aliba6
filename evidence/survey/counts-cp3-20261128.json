@@ -1,0 +1,34 @@
+{
+  "source": "https://docs.google.com/spreadsheets/d/1XsscGM37-SbORTGnK47Bg8y5J414AWqurFDE1JrQLUg/edit",
+  "captured_at": "2026-11-28 08:30 UTC+7",
+  "confirmation": "Nghĩa xác nhận ngoài nhóm Aliba6 và không trùng người.",
+  "counts": {
+    "total": 34,
+    "eligible": 20,
+    "q8Usable": 19,
+    "incidents": 9,
+    "q8": {
+      "Chọn nhầm món cho người ăn chay / dị ứng / kiêng": 1,
+      "Tổng tiền vượt dự tính": 3,
+      "Có người bị thiếu món hoặc phải đổi món": 6,
+      "Không biết món có thành phần gì": 2,
+      "Phải chọn lại quán": 3,
+      "Không gặp chuyện nào": 8
+    },
+    "dietary": {
+      "Có": 4,
+      "Không": 11,
+      "Không rõ, mình không hỏi": 5
+    },
+    "time": {
+      "Dưới 5 phút": 0,
+      "5–10 phút": 13,
+      "10–20 phút": 4,
+      "Trên 20 phút": 1,
+      "Không nhớ": 2
+    },
+    "optIn": 8
+  },
+  "method": "20 người chọn Có câu 2 trên 34 phiếu. Chỉ số câu 8 dùng 19 câu không mâu thuẫn; mỗi người tính một lần. Không tính trung bình tần suất chưa chuẩn hoá; không quy khoảng 10–20 thành chắc chắn >10 phút.",
+  "privacy": "Chỉ số tổng hợp; không chứa câu trả lời từng người."
+}
