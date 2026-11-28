@@ -1,0 +1,10 @@
+# Reflection — Phạm Hoàng Huy
+
+1. **Vai trò + phần mình làm:**
+   Trưởng nhóm Aliba6, track D2. Đến CP2 làm cặp X với Tùng, phụ trách luồng chính `codebase/agent.py`: workflow cố định, AI chỉ chọn món trong danh sách code đã lọc, các nhánh dừng sớm (115, hỏi lại, ngân sách không đủ). Nối model (`codebase/ai.py`, DeepSeek). Trước lượt 2 sửa nhóm lỗi "đọc sai người / ràng buộc" trong `codebase/tools.py` (commit `810e98e`), chạy lượt 2 `run-2@20261128-092542` và chấm cột `pass` (`eval/run-2.csv`, 19/22). Quay video CP3, soạn `slides/outline.md` và làm `demo-slides.pdf` *(đang làm — cập nhật khi xong)*, rà commit của cả nhóm trước mỗi mốc nộp.
+
+2. **AI hỗ trợ mình thế nào:**
+   Dùng Claude Code để soạn nháp code bản chạy thử, menu giả, bộ câu thử `tu_viet`, script đếm khảo sát, bản sửa parser và bản chấm nháp lượt 2. Mình đọc lại, chạy thử và duyệt từng phần. Có những chỗ phải sửa output của AI: regex nhận tên ban đầu bắt cả chữ thường có dấu; prompt chọn món lúc đầu hay chọn Nem rán (món không ghi thành phần) cho vừa tiền nên phải thêm thứ tự ưu tiên món chính. AI cũng giúp phát hiện dữ liệu khảo sát / phỏng vấn đáng ngờ, nhưng quyết định giữ hay bỏ là của nhóm. Mình không để AI chấm thay người chấm thứ hai (cột B của bản chấm thử), vì cần một người chấm độc lập.
+
+3. **Một câu thử trượt và bài học:**
+   B22 ở lượt 1: *"Một bạn dị ứng tôm cua hải sản, một bạn kiêng thịt bò…"*. Parser chỉ nhận "N người …", không nhận "một bạn …", nên coi cả 3 người là không có ràng buộc. Code lọc và kiểm giỏ vẫn chạy đúng, nhưng trên ràng buộc sai, nên người dị ứng hải sản nhận cơm chiên có tôm, mà output vẫn in "0 món vi phạm". Bài học: câu "đã kiểm bằng code" chỉ đúng khi bước đọc yêu cầu đúng. Lớp chặn an toàn ở giữa không cứu được đầu vào đọc sai. Lượt 2 sửa bằng cách: mọi chỗ ghi "dị ứng / ăn chay / kiêng" mà không gắn được vào ai thì hỏi lại chứ không lập giỏ, và giỏ chỉ ghi "đã kiểm theo ràng buộc in cạnh từng người" để người đặt tự nhìn ra nếu thiếu. Lượt 2 B22 đạt, số vi phạm từ 2 về 0.
