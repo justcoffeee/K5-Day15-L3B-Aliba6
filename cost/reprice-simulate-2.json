@@ -1,0 +1,57 @@
+{
+  "mode": "reprice_existing_no_api_calls",
+  "simulation_run_id": "simulate-2@20261128-113825",
+  "sessions": 50,
+  "errors": 0,
+  "measured_models": [
+    "deepseek-flash"
+  ],
+  "tokens_in": 124723,
+  "tokens_out": 86354,
+  "eval_run_id": "run-2@20261128-092542",
+  "passed": 19,
+  "total": 22,
+  "rate": 0.8636363636363636,
+  "market": {
+    "anchor": 12000000,
+    "x": 13,
+    "n": 22,
+    "ratio": 0.5909090909090909,
+    "low_ratio": 0.3873481847631513,
+    "high_ratio": 0.7674418380352814,
+    "users": {
+      "low": 4648178,
+      "base": 7090909,
+      "high": 9209302
+    }
+  },
+  "models": {
+    "deepseek-flash": {
+      "per_session": 0.0028208339999999995,
+      "per_success_proxy": 0.0032662288421052626,
+      "per_user_month": 0.015117097471153846,
+      "monthly": {
+        "low": 70266.95988927294,
+        "base": 107193.96251208206,
+        "high": 139217.91597529207
+      }
+    },
+    "deepseek-v4-pro": {
+      "per_session": 0.010131924,
+      "per_success_proxy": 0.01173170147368421,
+      "per_user_month": 0.054307624926923065,
+      "monthly": {
+        "low": 252431.5074175754,
+        "base": 385090.4263629431,
+        "high": 500135.3188547624
+      }
+    }
+  },
+  "warnings": [],
+  "immutable_sha256": {
+    "cost\\simulate-2.csv": "42cc9f748a43ea1c1d8b70c49527756f39e64c8bf4df531793ec9b1456d5e911",
+    "eval\\run-2.csv": "447c59aa6d390922cef6027ad8c84314471b2185e8f6aa9a8867b3da38e2773f",
+    "traces\\simulate-2.jsonl": "4da6a4c3970987eeef7f141531860cdad4c5cd1140f5fcde698338c23ce54d42",
+    "traces\\run-2.jsonl": "4ea5e9d78ab4b6a2e3772df0015abd1beba1839986bcdf9722f3dcdc9e57a4e4"
+  }
+}

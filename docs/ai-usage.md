@@ -38,3 +38,10 @@ README của nhóm có mục "Dùng AI vào việc gì" (2–3 dòng, bắt bu�
 
 - Codex đọc bảng phản hồi kết nối, giữ bản từng phiếu trên máy, xuất JSON chỉ gồm số tổng hợp, viết script đếm lại từ bản nội bộ và cập nhật summary/canvas. Không tạo hoặc sửa câu trả lời.
 - Nghĩa xác nhận toàn bộ người trả lời ngoài nhóm và không trùng. Không gắn nhãn riêng từng phiếu; câu 8 mâu thuẫn không dùng cho riêng chỉ số câu 8, các câu khác giữ nguyên. Không dùng câu 3 chưa xác minh để tính trung bình.
+
+
+## Bổ sung 28/11/2026 — nguồn quy mô và dự toán chi phí
+
+- Codex tìm nguồn công khai Vietdata và giá chính thức DeepSeek; bổ sung phép ngoại suy và giới hạn trong `cost/cost-estimate.md`, sửa `cost/personas.yaml` và spec §8.
+- Nghĩa chọn dùng 50 phiên simulate-2 đã có. Script `cost/reprice_existing.py` kiểm token/model/tỉ lệ 19/22, tính lại giá không gọi API, ghi băm kiểm tra kết quả gốc. Không tạo phiên, token hay tỉ lệ đạt mới; không sửa CSV/trace đã chạy.
+- Thấp/cao là độ nhạy tham chiếu theo công thức Wilson trên mẫu thuận tiện, không phải khảo sát đại diện. Quy đổi pro dùng token và tỉ lệ đạt của flash, không khẳng định đã đo model pro. Người kiểm báo cáo: Cấn Xuân Nghĩa.

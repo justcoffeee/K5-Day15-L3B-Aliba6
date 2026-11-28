@@ -6,11 +6,13 @@
 sessions: 50        # số phiên mô phỏng — bản nộp ≥50
 seed: 42            # giữ cố định để chạy lại ra cùng chuỗi phiên
 
-users:              # số người đặt hộ nhóm dùng sản phẩm mỗi tháng — 3 kịch bản
-  low: 1000
-  base: 5000
-  high: 20000
-  source: "(tự ước tính) — chưa có nguồn công khai về số người đặt đồ ăn hộ nhóm qua app ở Việt Nam; guide 4.2 không cho chép số 700 của khoá với track D. CP4: tìm nguồn công khai có link (số người dùng app giao đồ ăn) × tỉ lệ đặt hộ nhóm 13/22 từ khảo sát, rồi thay."
+# Quy mô ngoại suy tiềm năng; giả định toàn bộ quy mô này dùng mỗi tháng để stress-test.
+# Không phải người dùng thực tế hoặc MAU của sản phẩm; xem cost-estimate.md.
+users:
+  low: 4648178
+  base: 7090909
+  high: 9209302
+  source: "Vietdata 24/12/2023: hơn 12 triệu người dùng nền tảng giao đồ ăn năm 2023; lấy mốc 12.000.000 × 13/22 = 7.090.909. Thấp/cao: dải tham chiếu Wilson 95% của 13/22, không bảo đảm bao phủ quốc gia vì mẫu thuận tiện. Nguồn: https://www.vietdata.vn/post/ngành-giao-đồ-ăn-trực-tuyến-tại-việt-nam-baemin-rời-khỏi-thị-trường-sau-4-năm-thua-lỗ ; xem cost/cost-estimate.md."
 
 personas:           # chia theo câu 3 khảo sát (số lần đặt hộ / tháng) trên 13 người trả lời "Có" ở câu 2
   - name: dat_ho_it
@@ -32,19 +34,17 @@ personas:           # chia theo câu 3 khảo sát (số lần đặt hộ / th�
 
 # Model đã chốt: deepseek-flash cho cả run-2 (run-2@20261128-092542) và simulate-2 (simulate-2@20261128-113825).
 # run-1 và simulate-1 chạy bằng qwen/qwen3.5-flash:free (endpoint xkiro) — không dùng để tính chi phí.
-prices:             # USD / 1 triệu token — chép từ further-reading/model-prices.md của repo đề (BTC xem ngày 25/11/2026)
+# Token đo bằng deepseek-flash; giá peak/cache-miss để dự toán thận trọng.
+# Không gọi deepseek-v4-pro: chỉ quy đổi giá trên token flash, giữ cùng tỉ lệ đạt như một giả định.
+prices:
   - model: deepseek-flash
     input: 0.30
     output: 1.20
-    source: "giá cao điểm (08:00–11:00, 13:00–17:00 giờ VN) · https://api-docs.deepseek.com/quick_start/pricing · model-prices.md, xem 25/11/2026 — model đã thử nối (eval --try)"
+    source: "https://api-docs.deepseek.com/quick_start/pricing/ ; kiểm 28/11/2026; peak/cache-miss, không phải hoá đơn thực trả."
   - model: deepseek-v4-pro
     input: 1.32
     output: 3.96
-    source: "giá cao điểm · https://api-docs.deepseek.com/quick_start/pricing · model-prices.md, xem 25/11/2026 — mức model mạnh"
-  - model: claude-haiku-5-5
-    input: 0.10
-    output: 0.50
-    source: "prompt ≤100K token · model-prices.md (Anthropic), xem 25/11/2026 — tính trên token đo bằng deepseek-flash, hai hãng tách token khác nhau"
+    source: "https://api-docs.deepseek.com/quick_start/pricing/ ; kiểm 28/11/2026; peak/cache-miss; quy đổi từ token flash, chưa đo tỉ lệ đạt của pro."
 
 usd_to_vnd:         # tuỳ chọn: chưa điền vì BTC không chốt tỷ giá chung, nhóm chưa ghi nguồn tỷ giá
   rate:
