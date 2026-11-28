@@ -124,10 +124,10 @@ flowchart TD
 - Kết quả: lượt 1 16/22 (72.7%) — chưa đạt chuẩn, 2 câu vi phạm dị ứng / chay (B19, B22) · lượt 2 **19/22 (86.4%)** — 0 vi phạm dị ứng / chay, 0 vượt ngân sách, nhưng tu_choi 3/4 (B21 chưa từ chối việc gọi shipper) nên **vẫn chưa đạt chuẩn** — run ID: `run-1@20261127-232123` / `run-2@20261128-092542` (`deepseek-flash`) → chi tiết `eval/report.md`, hồ sơ `eval/README.md`
 
 ## §8. Chi phí khi dùng thật *(guide 4.2)*
-- Persona + giá: `cost/personas.yaml` · lượt mô phỏng: `cost/simulate-__.csv` (__ phiên)
-- Chi phí / task thành công: __ (model __) · __ (model __)
-- Chi phí / tháng ở quy mô thật: thấp __ · cơ sở __ · cao __ → chi tiết `cost/cost-estimate.md`
-- So với impact / người / tháng (§2): đáng làm không, vì sao:
+- Persona + giá: `cost/personas.yaml` (3 persona: đặt ít 62%, vừa 23%, nhiều 15%) · lượt mô phỏng: `cost/simulate-1.csv` (50 phiên, run ID `simulate-1@20261128-095850`, seed 42)
+- Chi phí / task thành công: **$0.0014** (model `deepseek-flash`) · **$0.0059** (model `deepseek-v4-pro`) · **$0.00049** (model `claude-haiku-5-5`) tính trên tỉ lệ đạt 19/22 (86%) của Lượt 2
+- Chi phí / tháng ở quy mô thật (`deepseek-flash`): thấp 1.000 người: **$6.67** (≈ 167.000đ) · cơ sở 5.000 người: **$33.34** (≈ 834.000đ) · cao 20.000 người: **$133.38** (≈ 3.335.000đ) · chi phí / người / tháng ở mức cơ sở: **$0.0067** (≈ 168đ/người/tháng) → chi tiết `cost/cost-estimate.md`
+- So với impact / người / tháng (§2): **Cực kỳ đáng làm** — Chi phí AI chỉ ~168 VNĐ/người/tháng để tiết kiệm ~20 phút thao tác và triệt tiêu rủi ro an toàn thực phẩm (dị ứng/chay) cho nhóm người dùng.
 
 ## §9. Rủi ro & an toàn
 - Dữ liệu: không thu tên thật, SĐT, địa chỉ; tên trong câu thử là tên giả. Khảo sát không thu email. Chỉ gửi cho model: tên gọi, ràng buộc, danh sách món an toàn.
@@ -135,7 +135,7 @@ flowchart TD
 - Ai có thể bị hại nếu AI sai, và nhóm chặn thế nào: người dị ứng / ăn chay trong nhóm (không phải người gõ) — chặn bằng `safe_dishes` + `validate_cart` chạy code; người đặt mất tiền — tổng do code cộng, gồm ship.
 
 ## §10. Phân công & changelog
-- Phân công có tên (theo chặng, chia cặp — guide "Cách chia việc"): đến CP2 — **cặp X** Phạm Hoàng Huy (luồng `agent.py`, chỗ chặn rủi ro) + Lê Thanh Tùng (`tools.py`: `get_menu`, `safe_dishes`, `validate_cart`); **cặp Y** Cấn Xuân Nghĩa (khảo sát, phỏng vấn, review, số bằng chứng đầu) + Nguyễn Mạnh Hùng (`data/menu.json`, DATA_CARD, `benchmark.csv`, `metric_spec.yaml`). Hai cặp review chéo phần của nhau trước 19:30. Sau CP2 đổi cặp.
+- Phân công có tên (theo chặng, chia cặp — guide "Cách chia việc"): đến CP2 — **cặp X** Phạm Hoàng Huy (luồng `agent.py`, chỗ chặn rủi ro) + Lê Thanh Tùng (`tools.py`: `get_menu`, `safe_dishes`, `validate_cart`); **cặp Y** Cấn Xuân Nghĩa (khảo sát, phỏng vấn, review, số bằng chứng đầu) + Nguyễn Mạnh Hùng (`data/menu.json`, DATA_CARD, `benchmark.csv`, `metric_spec.yaml`). Hai cặp review chéo phần của nhau trước 19:30. Sau CP2 đổi cặp: Huy + Nghĩa (hoàn thiện bằng chứng, video CP3, slides thuyết trình), Tùng + Hùng (đánh giá benchmark Lượt 2, chấm chéo độc lập, mô phỏng chi phí `simulate`).
 - Dùng AI vào việc gì (2–3 dòng; chi tiết `docs/ai-usage.md`): Claude Code soạn nháp code bản chạy thử, menu giả, 14 câu thử `tu_viet`, metric spec, câu hỏi khảo sát / phỏng vấn. Người có tên ở từng phần đọc lại, chạy thử và phải giải thích được. Không dùng AI để tạo người được phỏng vấn, trích dẫn hay câu trả lời khảo sát.
 - Nhật ký thay đổi — **mọi thay đổi sau CP2 19:30 Thứ Sáu 27/11 phải có dòng ở đây**:
 
@@ -152,6 +152,8 @@ flowchart TD
 | 28/11 08:30 | Cập nhật khảo sát CP3: 34 phiếu, 20 người đã đặt hộ; xác nhận ngoài nhóm/không trùng do Nghĩa cung cấp. Lưu số tổng hợp và script đếm riêng, bản từng phiếu giữ nội bộ, giữ dữ liệu CP2 | `evidence/survey/counts-cp3-20261128.json`, `count_cp3.py`; chỉ số câu 8 dùng 19 câu nhất quán, không sửa đáp án gốc |
 | 28/11 ~09:00 | §1–§2 đổi sang số khảo sát lượt CP3 (N=34, 20/34, 9/19; thời gian ~10,1 phút tự ước tính → impact ~1.690 giờ / tháng); câu 3 và câu 6 vẫn dùng số CP2, ghi rõ. Gỡ link bảng phản hồi Google Sheets khỏi repo | spec phải khớp `evidence/summary.md`; bảng phản hồi chứa từng câu trả lời, không công khai |
 | 28/11 ~09:30 | Thêm `evidence/survey/results-cp3.csv` (34 phiếu, ẩn danh, xuất từ CSV gốc 08:30); `count.py` thêm luật bỏ câu 8 mâu thuẫn và ghi file ra riêng; đếm lại khớp `counts-cp3-20261128.json`; §1 cách gom dùng số CP3 | Số CP3 phải đếm lại được từ repo (guide 1.2); CP2 chạy lại vẫn ra 13/22, 7/13 |
+| 28/11 ~09:40 | Chạy Lượt 2 `run-2@20261128-092542` (`deepseek-flash`), chấm độc lập khớp 22/22 giữa Tùng và Huy, hoàn thành `eval/report.md` (19/22 đạt, 0 vi phạm an toàn, 0 vượt tiền) | Hoàn thành đánh giá & cải tiến Rubric R5 cho CP4 |
+| 28/11 ~10:00 | Chạy mô phỏng chi phí 50 phiên (`cost/simulate-1.csv`), tính toán 3 kịch bản theo tỉ lệ đạt 86% của Lượt 2, hoàn thiện `cost/cost-estimate.md` và §8 | Hoàn thành ước tính chi phí Rubric R6 cho CP4 |
 
 **Sau CP4 (đến 23:59 Thứ Bảy 28/11)** (sửa theo góp ý — không sửa chuẩn "đạt", câu thử, số bằng chứng, kết quả các lượt đã chạy)
 
