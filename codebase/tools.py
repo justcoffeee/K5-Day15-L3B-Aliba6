@@ -210,15 +210,17 @@ def parse_request(text: str) -> dict:
     ordered = [people[n] for n in names]
 
     # Người không tên: "2 người ăn chay", "1 bạn dị ứng hải sản", "một bạn kiêng thịt bò".
+    # Dừng trước dấu ngắt câu HOẶC trước cụm đếm người tiếp theo ("1 người ăn chay 1 người dị ứng...").
+    stop_unnamed = r"[,.;]|\s+(?:và\s+)?%s\s+(?:người|bạn)\b" % COUNT_RE
     unnamed = []
-    for m in re.finditer(COUNT_RE + r"\s+(?:người|bạn)\s+((?:%s)[^,.;]*)" % CONSTRAINT_RE, low):
+    for m in re.finditer(COUNT_RE + r"\s+(?:người|bạn)\s+((?:%s)(?:(?!%s).)*)" % (CONSTRAINT_RE, stop_unnamed), low):
         covered.append((m.start(), m.end()))
         veg, avoid, labels, unk = _clause_constraints(m.group(2))
         unknown += unk
         for _ in range(_num(m.group(1)) or 0):
             unnamed.append({"vegetarian": veg, "avoid": set(avoid), "labels": list(labels), "wants": None})
     # Người không tên muốn một món: "1 bạn ăn bún chả", "2 bát bún chả".
-    for m in re.finditer(COUNT_RE + r"\s+(?:(?:người|bạn)\s+(?:ăn|muốn|lấy|gọi)|bát|tô|suất|phần|đĩa)\s+([^,.;]+)", low):
+    for m in re.finditer(COUNT_RE + r"\s+(?:(?:người|bạn)\s+(?:ăn|muốn|lấy|gọi)|bát|tô|suất|phần|đĩa)\s+((?:(?!%s).)+)" % stop_unnamed, low):
         dish = _find_dish(m.group(2), restaurant)
         if dish:
             for _ in range(_num(m.group(1)) or 0):

@@ -19,6 +19,7 @@ Nối model thật: điền .env (chép từ .env.example), rồi viết nhánh 
 """
 import json
 import os
+import time
 import urllib.error
 import urllib.request
 
@@ -41,9 +42,10 @@ def load_env(path=os.path.join(ROOT, ".env")):
 
 
 load_env()
-MODEL_PROVIDER = (os.environ.get("MODEL_PROVIDER") or "fake").strip().lower()
-MODEL_NAME = (os.environ.get("MODEL_NAME") or "").strip()
-API_KEY = (os.environ.get("API_KEY") or "").strip()
+MODEL_NAME = (os.environ.get("MODEL_NAME") or os.environ.get("OPENAI_MODEL") or "").strip()
+API_KEY = (os.environ.get("API_KEY") or os.environ.get("OPENAI_API_KEY") or "").strip()
+BASE_URL = (os.environ.get("BASE_URL") or os.environ.get("OPENAI_BASE_URL") or "").strip()
+MODEL_PROVIDER = (os.environ.get("MODEL_PROVIDER") or ("openai" if os.environ.get("OPENAI_API_KEY") else "fake")).strip().lower()
 
 
 SHOW_RAW = False   # đổi thành True để in nguyên phản hồi của API khi cần tìm tên trường
@@ -52,25 +54,31 @@ URL_DEEPSEEK = "https://api.deepseek.com/chat/completions"   # API định dạn
 URL_XKIRO = "https://api.xkiro.com/v1/chat/completions"      # API định dạng OpenAI
 URL_CLAUDE = "https://api.anthropic.com/v1/messages"
 URL_OLLAMA = "http://localhost:11434/api/chat"
-BASE_URL = os.environ.get("BASE_URL", "").strip()
 
 
 def post_json(url, headers, body, timeout=60):
     """Gửi POST JSON, trả về JSON phản hồi. Chỉ dùng thư viện chuẩn (urllib). Chép từ docs/connect-model.md."""
-    req = urllib.request.Request(
-        url, data=json.dumps(body).encode("utf-8"), method="POST",
-        headers=dict({"Content-Type": "application/json"}, **headers))
-    try:
-        with urllib.request.urlopen(req, timeout=timeout) as r:
-            data = json.loads(r.read().decode("utf-8"))
-    except urllib.error.HTTPError as e:
-        raise RuntimeError("HTTP %d: %s" % (e.code, e.read().decode("utf-8", "replace")[:300]))
+    payload = json.dumps(body).encode("utf-8")
+    req_headers = dict({"Content-Type": "application/json"}, **headers)
+    for attempt in range(3):
+        req = urllib.request.Request(url, data=payload, method="POST", headers=req_headers)
+        try:
+            with urllib.request.urlopen(req, timeout=timeout) as r:
+                data = json.loads(r.read().decode("utf-8"))
+            break
+        except urllib.error.HTTPError as e:
+            if e.code == 429 and attempt < 2:
+                time.sleep(2 * (attempt + 1))
+                continue
+            raise RuntimeError("HTTP %d: %s" % (e.code, e.read().decode("utf-8", "replace")[:300]))
     if SHOW_RAW:
         print(json.dumps(data, ensure_ascii=False, indent=2)[:3000])
     return data
 
 
 def call_openai(system, user, url=URL_OPENAI):
+    if not url.rstrip("/").endswith("/chat/completions"):
+        url = url.rstrip("/") + "/chat/completions"
     messages = ([{"role": "system", "content": system}] if system else []) + [{"role": "user", "content": user}]
     data = post_json(url, {"Authorization": "Bearer " + API_KEY},
                      {"model": MODEL_NAME, "messages": messages})
