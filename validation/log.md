@@ -22,6 +22,6 @@ Câu hỏi sau: *"Nếu mai không được dùng nữa, bạn thấy: rất ti�
 ## Ghi chú kiểm lại (28/11 ~13:10, Huy + Claude Code)
 
 - Ba phiên dùng thử chạy bằng `gpt-4o-mini` (máy Hùng, biến `OPENAI_*`), **không phải `deepseek-flash`** — model nhóm dùng cho lượt 2 và mô phỏng chi phí. Code lọc / kiểm giỏ giống nhau, phần chọn món do model khác làm.
-- Học viên 2: câu *"Quán Bún Mẫu, 3 người, 150k, 1 người vừa ăn chay vừa dị ứng đậu phộng"* với code hiện tại **không ra giỏ** mà hỏi lại (chưa hiểu "vừa … vừa …", ràng buộc chưa rõ → không lập giỏ). **Hùng cần ghi đúng câu người thử gõ lại và hệ thống trả gì**; nếu là hỏi lại thì sửa cột quan sát cho đúng.
+- Học viên 2: câu *"Quán Bún Mẫu, 3 người, 150k, 1 người vừa ăn chay vừa dị ứng đậu phộng"* với code hiện tại **không ra giỏ** mà hỏi lại (chưa hiểu "vừa … vừa …", ràng buộc chưa rõ → không lập giỏ). **Hùng xác nhận (28/11, báo qua Huy):** phiên diễn ra đúng như kịch bản Hùng đã gửi và bảng trên, giữ nguyên. Kết quả khác khi chạy lại có thể do code đổi sau phiên (~12:55) hoặc model khác (`gpt-4o-mini`); nhóm không có bản ghi trace của phiên thử để so.
 - Học viên 1: lỗi gõ liền không dấu phẩy được sửa trong lúc thử (`spec.md` §10, ~12:55) — code demo khác code lượt 2; đọc lại 22 câu thử sau khi sửa: không câu nào đổi.
 
