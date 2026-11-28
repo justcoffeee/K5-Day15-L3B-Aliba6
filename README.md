@@ -124,5 +124,5 @@ Claude Code soạn nháp code bản chạy thử, menu giả, 14 câu thử `tu_
 | 4 | Bản chạy thử làm trọn lát cắt | `codebase/` · lệnh ở mục "Lệnh" |
 | 5 | Định nghĩa "tốt" + bộ câu thử | `data/DATA_CARD.md` · `eval/` |
 | 6 | Mô phỏng chi phí khi dùng thật | `cost/` |
-| 7 | Slide + demo + video dự phòng | slide trong repo (PDF, PPTX, HTML…) hoặc link slide ở form CP4 · link video: ____ |
+| 7 | Slide + demo + video dự phòng | slide trong repo (PDF, PPTX, HTML…) hoặc link slide ở form CP4 · video CP3 (30 giây, bản chạy thử gọi `deepseek-flash` thật, câu B01 + B22): [Google Drive](https://drive.google.com/file/d/1TmvLaIIYyoUMQr0c9zTB0p_5afpd2OdJ/view?usp=sharing) · video dự phòng CP4: ____ |
 | + | *Bonus:* người dùng thử | `validation/log.md` |
