@@ -28,3 +28,8 @@ README của nhóm có mục "Dùng AI vào việc gì" (2–3 dòng, bắt bu�
 - Cấn Xuân Nghĩa cung cấp nội dung P1–P3, số liệu và hai câu trích mỗi người, đồng thời xác nhận cả ba ngoài nhóm Aliba6. Codex biên tập cấu trúc theo GUIDE, giữ trích dẫn, tách số nghe được với phép tính và tổng hợp theo vai.
 - Không lấy nội dung từ ba kịch bản luyện tập trước đó để bổ sung lời kể. Các biên bản mới thay hồ sơ ứng viên, chưa xác nhận ánh xạ với dòng Google Form.
 - Chưa nhận/nghe bản ghi âm; ngày giờ, hình thức và người hỏi chưa được cung cấp. Người phụ trách kiểm lại: Cấn Xuân Nghĩa.
+
+## Rà soát trước CP3 — 28/11/2026
+
+- Nghĩa xác nhận ngày phỏng vấn 27/11/2026, hình thức trực tuyến, Nghĩa hỏi và ghi cho cả ba hồ sơ. Codex chỉ điền những thông tin đã được cung cấp, không tự gán giờ hoặc trả lời thay người tham gia.
+- Các điểm chưa có phản hồi bổ sung được ghi rõ trạng thái trong P1–P3. Theo yêu cầu của Nghĩa, trích dẫn chưa xác nhận trong `evidence/summary.md` quay về nguồn công khai W02/W04/W03; chưa chốt kết quả 2/3 phỏng vấn.
