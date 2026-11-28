@@ -5,14 +5,14 @@
 
 | # | Trang | Có gì | Số lấy từ | Xong |
 |---|---|---|---|---|
-| 1 | Người dùng & pain | Ai · việc gì · chỗ đau + số và trích dẫn | `evidence/summary.md` | ☐ |
-| 2 | Vì sao chọn bài này | Bảng impact rút gọn + hướng bị loại | `spec.md` §2 | ☐ |
-| 3 | Giải pháp | Lát cắt một câu · sơ đồ · AI tự làm đến đâu, vì sao | `spec.md` §4 | ☐ |
-| 4 | Demo live | 1 trường hợp thường + 1 trường hợp khó (lấy từ bộ câu thử); mạng hỏng → video dự phòng | `eval/benchmark.csv` | ☐ |
-| 5 | **Đánh giá thế nào** | Dataset · bộ câu thử · metric · lượt 1 → lượt 2 so với chuẩn "đạt" (kèm run ID) · lỗi chính | `eval/README.md`, `eval/report.md` | ☐ |
-| 6 | **Chi phí khi dùng thật** | Chi phí / task thành công · 3 kịch bản · so với impact | `cost/cost-estimate.md` | ☐ |
-| 7 | Kết luận | Go / iterate / stop — dẫn số ở trang 1, 5, 6 | — | ☐ |
-| 8 | Nếu có thêm 1 tuần | 2–3 việc, trỏ về lỗi còn lại / phản hồi người dùng | `eval/report.md` mục 4 · `validation/log.md` | ☐ |
+| 1 | Người dùng & pain | Ai · việc gì · chỗ đau + số và trích dẫn | `evidence/summary.md` | ☑ |
+| 2 | Vì sao chọn bài này | Bảng impact rút gọn + hướng bị loại | `spec.md` §2 | ☑ |
+| 3 | Giải pháp | Lát cắt một câu · sơ đồ · AI tự làm đến đâu, vì sao | `spec.md` §4 | ☑ |
+| 4 | Demo live | 1 trường hợp thường + 1 trường hợp khó (lấy từ bộ câu thử); mạng hỏng → video dự phòng | `eval/benchmark.csv` | ☑ |
+| 5 | **Đánh giá thế nào** | Dataset · bộ câu thử · metric · lượt 1 → lượt 2 so với chuẩn "đạt" (kèm run ID) · lỗi chính | `eval/README.md`, `eval/report.md` | ☑ |
+| 6 | **Chi phí khi dùng thật** | Chi phí / task thành công · 3 kịch bản · so với impact | `cost/cost-estimate.md` | ☑ |
+| 7 | Kết luận | Go / iterate / stop — dẫn số ở trang 1, 5, 6 | — | ☑ |
+| 8 | Nếu có thêm 1 tuần | 2–3 việc, trỏ về lỗi còn lại / phản hồi người dùng | `eval/report.md` mục 4 · `validation/log.md` | ☑ |
 
 **Trước khi lên:** tải repo về một máy khác (hoặc thư mục mới), chạy theo mục "Chạy trong 3 phút" của `README.md` · `.env` có trên máy demo, đã gọi thử 1 câu trong vòng 1 giờ trước giờ demo · video dự phòng mở được bằng cửa sổ ẩn danh · biết bản chạy thử sẽ làm gì với **1 câu thử lạ** của giám khảo.
 
@@ -87,25 +87,26 @@ Ai nói trang nào (mỗi người ≥1 phần) — *đề xuất, nhóm chốt 
 - **Đã sửa giữa hai lượt:** phần đọc yêu cầu — nhận "một bạn dị ứng…", chữ hoa đầu câu không thành tên người, ràng buộc không rõ thì hỏi lại. Lượt 2 đổi cả model nên không tách được phần cải thiện do code hay do model.
 - Chân trang: `eval/README.md` · `eval/report.md`
 
-## Trang 6 · Chi phí khi dùng thật *(chờ `cost/cost-estimate.md` của Nghĩa + Hùng)*
+## Trang 6 · Chi phí khi dùng thật
 
-- **Chi phí / task thành công** (kịch bản cơ sở, `deepseek-flash`): `__` USD = chi phí trung bình / phiên `__` ÷ tỉ lệ đạt lượt 2 (19/22 = 86,4%)
+- **Chi phí / task thành công** (kịch bản cơ sở, `deepseek-flash`): **$0.0014 USD** (≈ 35 ₫) = chi phí trung bình / phiên **$0.0012** ÷ tỉ lệ đạt lượt 2 (19/22 = 86,4%)
+- Đo qua 50 phiên mô phỏng thật (`cost/simulate-1.csv`), seed 42, 3 persona (`personas.yaml`).
 
 | Kịch bản | Người dùng / tháng (nguồn) | Model rẻ `deepseek-flash` | Model mạnh `deepseek-v4-pro` |
 |---|---|---|---|
-| Thấp | `__` | `__` USD / tháng | `__` USD / tháng |
-| Cơ sở | `__` | `__` | `__` |
-| Cao | `__` | `__` | `__` |
+| Thấp | 1.000 người *(ước tính)* | **$6.67** USD / tháng | **$27.94** USD / tháng |
+| Cơ sở | 5.000 người *(ước tính)* | **$33.34** USD / tháng | **$139.69** USD / tháng |
+| Cao | 20.000 người *(ước tính)* | **$133.38** USD / tháng | **$558.75** USD / tháng |
 
-- **So với impact:** chi phí / người / tháng `__` so với ~20 phút gom món / người đặt hộ / tháng → `__` (một dòng kết luận).
-- Chân trang: `cost/cost-estimate.md` · `cost/simulate-__.csv` (≥50 phiên) · giá: `cost/personas.yaml`
+- **So với impact:** chi phí / người / tháng chỉ **$0.0067** (≈ **168 ₫ / người / tháng**) so với ~20 phút gom món / người đặt hộ / tháng → **Cực kỳ đáng làm**, chi phí AI không đáng kể so với giá trị tiết kiệm thời gian và triệt tiêu nguy cơ dị ứng.
+- Chân trang: `cost/cost-estimate.md` · `cost/simulate-1.csv` (50 phiên, run ID `simulate-1@20261128-095850`) · giá: `cost/personas.yaml`
 
-## Trang 7 · Kết luận: **ITERATE** *(đề xuất — chốt khi có trang 6)*
+## Trang 7 · Kết luận: **ITERATE**
 
 - **Pain có thật** (trang 1): 20/34 đặt hộ, 9/19 gặp sự cố — nhưng nhầm dị ứng hiếm (1/19), lỗi hay gặp là thiếu / đổi món và vượt tiền.
-- **Sản phẩm an toàn hơn sau một lần sửa** (trang 5): 16/22 → 19/22, vi phạm dị ứng 2 → 0 — **chưa đạt chuẩn** vì 1 câu từ chối.
-- **Chi phí** (trang 6): `__` / task thành công — `__` (rẻ / đắt so với impact).
-- → Chưa "go" khi còn câu ngoài phạm vi chưa từ chối và chưa có người dùng thật thử trên menu thật; không "stop" vì pain và chi phí `__`.
+- **Sản phẩm an toàn hơn sau một lần sửa** (trang 5): 16/22 → 19/22, vi phạm dị ứng 2 → 0 — **chưa đạt chuẩn** vì 1 câu từ chối (B21).
+- **Chi phí** (trang 6): **$0.0014** / task thành công — **siêu rẻ** (chỉ 168 ₫ / người / tháng) so với impact tiết kiệm 1.690 giờ / tháng.
+- → Chưa "go" khi còn câu ngoài phạm vi chưa từ chối (B21) và chưa có người dùng thật thử trên menu thật; không "stop" vì pain có thật và chi phí vận hành cực thấp. Quyết định: **ITERATE** tiếp vòng sau.
 
 ## Trang 8 · Nếu có thêm 1 tuần
 
